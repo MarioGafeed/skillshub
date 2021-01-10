@@ -15,7 +15,7 @@ class CatSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   // Error Here
        Cat::factory()->has(
          Skill::Factory()->has(
            Exam::Factory()->has(
