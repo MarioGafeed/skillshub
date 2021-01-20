@@ -16,7 +16,7 @@ class Role extends Model
         'password',
     ];
 
-    public function users_relation()
+    public function users()
     {
        return $this->HasMany(User::class);
     }

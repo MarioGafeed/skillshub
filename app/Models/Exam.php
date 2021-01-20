@@ -10,17 +10,17 @@ class Exam extends Model
     use HasFactory;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function questions_relation()
+    public function questions()
     {
        return $this->HasMany(Question::class);
     }
 
-    public function skills_relation()
+    public function skill()
     {
        return $this->BelongsTo(Skill::class);
     }
 
-    public function users_relation()
+    public function users()
     {
       return $this->BelongsToMany(User::class);
     }

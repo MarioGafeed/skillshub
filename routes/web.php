@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Http\Controllers\web\HomeController;
+use  App\Http\Controllers\web\SkillController;
+use  App\Http\Controllers\web\CatController;
+use  App\Http\Controllers\web\ExamController;
+use  App\Http\Controllers\web\LangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::middleware('lang')->group(function() {
+  Route::get('/', [HomeController::class, 'index']);
+
+  Route::get('/categories/show/{id}', [CatController::class, 'show']);
+  Route::get('/skills/show/{id}', [SkillController::class, 'show']);
+  Route::get('/exams/show/{id}', [ExamController::class, 'show']);
+  Route::get('/exams/show/questions/{id}', [ExamController::class, 'showquestions']);
+
 });
+
+Route::get('/lang/set/{lang}', [LangController::class, 'set']);

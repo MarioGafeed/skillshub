@@ -10,7 +10,7 @@ class Question extends Model
     use HasFactory;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function exams_relation()
+    public function exam()
     {
        return $this->BelongsTo(Exam::class);
     }
