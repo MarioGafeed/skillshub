@@ -18,5 +18,16 @@ return [
   'moreCourses'                      =>     'More Courses',
   'contactUs'                        =>     'Contact Us',
   'contactUsNow'                     =>     'Contact Us Now',
+  'back'                             =>     'Back',
+  'next'                             =>     'Next',
+  'start_exam'                       =>     'Start Exam',
+  'gtouch'                           =>     'Get Toutch',
+  'sendMessage'                      =>     'Send Message',
+  'conn_info'                        =>     'Contact Information',
+  'name'                             =>     'Name',
+  'email'                            =>     'Email',
+  'subject'                          =>     'Subject',
+  'eMessage'                         =>     'Enter Message',
+  'sendMessage'                      =>     'Send Message',
 
 ];

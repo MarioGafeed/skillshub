@@ -5,7 +5,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{__('web.cats')}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       @foreach($cats As $cat)
-                      <li><a href="{{ url("(categories/show/{$cat->id})") }}">
+                      <li><a href="{{ url("categories/show/{$cat->id}") }}">
                         <!-- @if(App::getlocale() == "en")
                          {{  json_decode($cat->name)->en }}
                         @else

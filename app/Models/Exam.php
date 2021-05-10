@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,4 +25,20 @@ class Exam extends Model
     {
       return $this->BelongsToMany(User::class);
     }
+
+    public function jname($lang = null)
+        {
+          $lang = $lang ?? App::getlocale(); // For Dashboard, ?? Means if $lang not null make $lang = App::getlocale();
+          return json_decode($this->name)->$lang;
+        }
+
+    public function jdesc($lang = null)
+        {
+          $lang = $lang ?? App::getlocale(); // For Dashboard, ?? Means if $lang not null make $lang = App::getlocale();
+          return json_decode($this->desc)->$lang;
+        }
+
+
+
+
 }

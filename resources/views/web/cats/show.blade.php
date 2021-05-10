@@ -2,234 +2,118 @@
 
 
 @section('title')
-
+ Categories- {{$cat->jname()}}
 @endsection
 
 @section('section')
-  <!-- Hero-area -->
-  <div class="hero-area section">
 
-    <!-- Backgound Image -->
-    <div class="bg-image bg-parallax overlay" style="background-image:url(./img/page-background.jpg)"></div>
-    <!-- /Backgound Image -->
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 text-center">
-          <ul class="hero-area-tree">
-            <li><a href="index.html">{{ __('web.home') }}</a></li>
-            <li><a href="category.html">Category name</a></li>
-            <li>Skill name</li>
-          </ul>
-          <h1 class="white-text">Skill name</h1>
 
-        </div>
-      </div>
-    </div>
+		<!-- Hero-area -->
+		<div class="hero-area section">
 
-  </div>
-  <!-- /Hero-area -->
+			<!-- Backgound Image -->
+			<div class="bg-image bg-parallax overlay" style="background-image:url(./img/page-background.jpg)"></div>
+			<!-- /Backgound Image -->
 
-  <!-- Blog -->
-  <div id="blog" class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 text-center">
+						<ul class="hero-area-tree">
+							<li><a href="index.html">Home</a></li>
+							<li>{{ $cat->jname() }}</li>
+						</ul>
+						<h1 class="white-text">{{ $cat->jname() }}</h1>
 
-    <!-- container -->
-    <div class="container">
+					</div>
+				</div>
+			</div>
 
-      <!-- row -->
-      <div class="row">
+		</div>
+		<!-- /Hero-area -->
 
-        <!-- main blog -->
-        <div id="main" class="col-md-12">
+		<!-- Blog -->
+		<div id="blog" class="section">
 
-          <!-- row -->
-          <div class="row">
+			<!-- container -->
+			<div class="container">
 
-            <!-- single exam -->
-            <div class="col-md-3">
-              <div class="single-blog">
-                <div class="blog-img">
-                  <a href="exam.html">
-                    <img src="./img/exam1.jpg" alt="">
-                  </a>
-                </div>
-                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum persecuti.</a></h4>
-                <div class="blog-meta">
-                                      <span>18 Oct, 2017</span>
-                  <div class="pull-right">
-                    <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /single exam -->
+				<!-- row -->
+				<div class="row">
 
-            <!-- single exam -->
-            <div class="col-md-3">
-              <div class="single-blog">
-                <div class="blog-img">
-                  <a href="exam.html">
-                    <img src="./img/exam2.jpg" alt="">
-                  </a>
-                </div>
-                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum persecuti.</a></h4>
-                <div class="blog-meta">
-                                      <span>18 Oct, 2017</span>
-                  <div class="pull-right">
-                    <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /single exam -->
+					<!-- main blog -->
+					<div id="main" class="col-md-9">
 
-            <!-- single exam -->
-            <div class="col-md-3">
-              <div class="single-blog">
-                <div class="blog-img">
-                  <a href="exam.html">
-                    <img src="./img/exam3.jpg" alt="">
-                  </a>
-                </div>
-                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum persecuti.</a></h4>
-                <div class="blog-meta">
-                                      <span>18 Oct, 2017</span>
-                  <div class="pull-right">
-                    <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /single exam -->
+						<!-- row -->
+						<div class="row">
+							@foreach($skills As $skill)
 
-            <!-- single exam -->
-            <div class="col-md-3">
-              <div class="single-blog">
-                <div class="blog-img">
-                  <a href="exam.html">
-                    <img src="./img/exam4.jpg" alt="">
-                  </a>
-                </div>
-                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum persecuti.</a></h4>
-                <div class="blog-meta">
-                                      <span>18 Oct, 2017</span>
-                  <div class="pull-right">
-                    <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-                          <!-- /single exam -->
+							<!-- single skill -->
+							<div class="col-md-4">
+								<div class="single-blog">
+									<div class="blog-img">
+										<a href="{{ url("/skills/show/{$skill->id}") }}">
+											<img src="{{ asset("uploads/$skill->img") }}" alt="">
+										</a>
+									</div>
+									<h4><a href="{{ url("/skills/show/{$skill->id}")  }}">{{$skill->jname()}}</a></h4>
+									<div class="blog-meta">
+										<!-- <span>18 Oct, 2017</span> -->
+										<span>{{ Carbon\Carbon::parse($skill->created_at)->format('d M Y') }}</span>
+										<div class="pull-right">
+											<span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> {{$skill->getstudentsNum()}}</a></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /single skill -->
+							@endforeach
 
-                          <!-- single exam -->
-            <div class="col-md-3">
-              <div class="single-blog">
-                <div class="blog-img">
-                  <a href="exam.html">
-                    <img src="./img/exam5.jpg" alt="">
-                  </a>
-                </div>
-                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum persecuti.</a></h4>
-                <div class="blog-meta">
-                                      <span>18 Oct, 2017</span>
-                  <div class="pull-right">
-                    <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-                          <!-- /single exam -->
+						</div>
+						<!-- /row -->
 
-                          <!-- single exam -->
-            <div class="col-md-3">
-              <div class="single-blog">
-                <div class="blog-img">
-                  <a href="exam.html">
-                    <img src="./img/exam6.jpg" alt="">
-                  </a>
-                </div>
-                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum persecuti.</a></h4>
-                <div class="blog-meta">
-                                      <span>18 Oct, 2017</span>
-                  <div class="pull-right">
-                    <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /single exam -->
+						<!-- row -->
+						<div class="row">
 
-                          <!-- single exam -->
-            <div class="col-md-3">
-              <div class="single-blog">
-                <div class="blog-img">
-                  <a href="exam.html">
-                    <img src="./img/exam7.jpg" alt="">
-                  </a>
-                </div>
-                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum persecuti.</a></h4>
-                <div class="blog-meta">
-                                      <span>18 Oct, 2017</span>
-                  <div class="pull-right">
-                    <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /single exam -->
+							<!-- pagination -->
+						{{ $skills->links('web.inc.paginator') }}
+							<!-- pagination -->
 
-                          <!-- single exam -->
-            <div class="col-md-3">
-              <div class="single-blog">
-                <div class="blog-img">
-                  <a href="exam.html">
-                    <img src="./img/exam8.jpg" alt="">
-                  </a>
-                </div>
-                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum persecuti.</a></h4>
-                <div class="blog-meta">
-                                      <span>18 Oct, 2017</span>
-                  <div class="pull-right">
-                    <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /single exam -->
+						</div>
+						<!-- /row -->
+					</div>
+					<!-- /main blog -->
 
-          </div>
-          <!-- /row -->
+					<!-- aside blog -->
+					<div id="aside" class="col-md-3">
 
-          <!-- row -->
-          <div class="row">
+						<!-- search widget -->
+						<div class="widget search-widget">
+							<form>
+								<input class="input" type="text" name="search">
+								<button><i class="fa fa-search"></i></button>
+							</form>
+						</div>
+						<!-- /search widget -->
 
-            <!-- pagination -->
-            <div class="col-md-12">
-              <div class="post-pagination">
-                <a href="#" class="pagination-back pull-left">Back</a>
-                <ul class="pages">
-                  <li class="active">1</li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                </ul>
-                <a href="#" class="pagination-next pull-right">Next</a>
-              </div>
-            </div>
-            <!-- pagination -->
+						<!-- category widget -->
+						<div class="widget category-widget">
+							<h3>{{ __('web.cats') }}</h3>
+							@foreach($allCats As $allCat)
+							<a class="category" href="{{ url("categories/show/{$allCat->id}") }}">{{ $allCat->jname() }} <span>{{ $allCat->skills()->count() }}</span></a>
+							@endforeach
+						</div>
+						<!-- /category widget -->
+					</div>
+					<!-- /aside blog -->
 
-          </div>
-          <!-- /row -->
-        </div>
-        <!-- /main blog -->
+				</div>
+				<!-- row -->
 
-      </div>
-      <!-- row -->
+			</div>
+			<!-- container -->
 
-    </div>
-    <!-- container -->
-
-  </div>
-  <!-- /Blog -->
+		</div>
+		<!-- /Blog -->
 
 @endsection
