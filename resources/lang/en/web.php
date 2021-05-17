@@ -6,6 +6,12 @@ return [
   'contact'                          =>     'Contact',
   'signin'                           =>     'Signin',
   'signup'                           =>     'Signup',
+  'signout'                          =>     'Signout',
+  'signup_estimate'                  =>     'Sign Up and estimate your skills',
+  'signin_exam'                      =>     'Sign In to start exam',
+  'password'                         =>     'Password',
+  'password_confirm'                 =>     'Password Confirm',
+  'remember'                         =>     'Remember Me',
 
   'heroTitle'                        =>     'Skills Hub Free Online Skill Assement',
   'heroDesc'                         =>     'Join Us and test your Skills Now',

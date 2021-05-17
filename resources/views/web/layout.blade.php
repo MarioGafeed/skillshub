@@ -37,7 +37,7 @@
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a class="logo" href="index.html">
+						<a class="logo" href="{{ url('/') }}">
 							<img src="{{  asset('web/img/logo.png') }}" alt="logo">
 						</a>
 					</div>
@@ -82,7 +82,7 @@
           <!-- copyright -->
           <div class="col-md-8 col-md-pull-4">
             <div class="footer-copyright">
-              <span>&copy; Copyright 2021. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">{{ __('web.SkillsHub') }}</a></span>
+              <span>&copy; Copyright 2021. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{{ url('/') }}">{{ __('web.SkillsHub') }}</a></span>
             </div>
           </div>
           <!-- /copyright -->
@@ -105,6 +105,13 @@
     <script type="text/javascript" src="{{ asset('web/js/jquery.min.js') }} "></script>
     <script type="text/javascript" src="{{ asset('web/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('web/js/main.js') }}"></script>
+
+<script type="text/javascript">
+	$('#logout-link').click(function(e) {
+		e.preventDefault()
+		$('#logout-form').submit()
+	})
+</script>
 
 	@yield('scripts')
 

@@ -18,7 +18,7 @@ Skills - {{$skill->jname()}}
     <div class="row">
       <div class="col-md-10 col-md-offset-1 text-center">
         <ul class="hero-area-tree">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{{ url('/') }}">Home</a></li>
           <li><a href="{{ url("/categories/show/{$skill->cat->id}") }}">{{ $skill->cat->jname() }}</a></li>
           <li>{{$skill->jname()}}</li>
         </ul>

@@ -113,7 +113,7 @@
            $('#success-div').text(data.success)
          },
               error: function(xhr, status, error)
-                   {                  
+                   {
                      $('#errors-div').show()
                      $.each(xhr.responseJSON.errors, function(key, item)
                      {
