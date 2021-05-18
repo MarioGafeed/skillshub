@@ -30,7 +30,7 @@ Route::middleware('lang')->group(function() {
   Route::get('/skills/show/{id}', [SkillController::class, 'show']);
   Route::get('/exams/show/{id}', [ExamController::class, 'show']);
   Route::get('/exams/show/questions/{id}', [ExamController::class, 'showquestions']);
-  Route::get('/contact', [ContactController::class, 'index']);
+  Route::get('/contact', [ContactController::class, 'index'])->middleware(['verified']);
   Route::post('/contact/message/send', [ContactController::class, 'send']);
 
 });

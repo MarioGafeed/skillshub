@@ -12,6 +12,11 @@ return [
   'password'                         =>     'Password',
   'password_confirm'                 =>     'Password Confirm',
   'remember'                         =>     'Remember Me',
+  'resend_mail'                      =>     'Resend verification Email',
+  'verify_problem'                   =>     'If the previous one was accidentally deleted or lost.',
+  'forgot_pass'                      =>     'Forgot password?',
+  'submit'                           =>     'Submit',
+  'reset-password'                   =>     'Reset Password',
 
   'heroTitle'                        =>     'Skills Hub Free Online Skill Assement',
   'heroDesc'                         =>     'Join Us and test your Skills Now',

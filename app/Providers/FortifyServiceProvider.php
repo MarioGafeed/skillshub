@@ -43,6 +43,19 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::loginView(function () {
                 return view('auth.login');
             });
+// Add By mario
+        Fortify::verifyEmailView(function () {
+        return view('auth.verify-email');
+        });
+// ِAdd By mario
+        Fortify::requestPasswordResetLinkView(function () {
+        return view('auth.forgot-password');
+        });
+
+// Add By Mario
+        Fortify::resetPasswordView(function ($request) {
+        return view('auth.reset-password', ['request' => $request]);
+    });
 
 
         RateLimiter::for('login', function (Request $request) {

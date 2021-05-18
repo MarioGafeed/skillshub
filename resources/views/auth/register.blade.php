@@ -43,6 +43,9 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="contact-form">
           <h4>{{ __('web.signup') }}</h4>
+
+          @include('web.inc.messages')
+
           <form method="post" action="{{ url('/register') }}">
             @csrf
             <input class="input" type="text" name="name" placeholder="{{ __('web.name') }}">

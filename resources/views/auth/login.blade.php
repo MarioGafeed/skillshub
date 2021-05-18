@@ -43,6 +43,9 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="contact-form">
           <h4>{{__('web.signin')}}</h4>
+
+          @include('web.inc..messages')
+
           <form method="post" action="{{ url('/login') }}">
             @csrf
             <input class="input" type="email" name="email" placeholder="{{__('web.email')}}">
@@ -50,6 +53,7 @@
             <input type="checkbox" name="remember" > {{ __('web.remember') }} </br>
             <button type="submit" class="main-button icon-button pull-right">{{__('web.signin')}}</button>
           </form>
+          <a href="{{url('/forgot-password')}}" class="main-button icon-button pull-right">{{__('web.forgot_pass')}}</a>
         </div>
       </div>
       <!-- /login form -->
