@@ -20,7 +20,7 @@
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1 text-center">
 						<ul class="hero-area-tree">
-							<li><a href="{{ url('/') }}">{{ __(web.home) }}</a></li>
+							<li><a href="{{ url('/') }}">{{ __('web.home') }}</a></li>
 							<li>{{ $cat->jname() }}</li>
 						</ul>
 						<h1 class="white-text">{{ $cat->jname() }}</h1>
