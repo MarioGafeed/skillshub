@@ -29,7 +29,12 @@ Route::middleware('lang')->group(function() {
   Route::get('/categories/show/{id}', [CatController::class, 'show']);
   Route::get('/skills/show/{id}', [SkillController::class, 'show']);
   Route::get('/exams/show/{id}', [ExamController::class, 'show']);
-  Route::get('/exams/show/questions/{id}', [ExamController::class, 'showquestions']);
+// Start Exam
+  Route::post('/exams/start/{id}', [ExamController::class, 'start'])->middleware(['auth', 'student', 'verified']);
+  Route::get('/exams/show/questions/{id}', [ExamController::class, 'showquestions'])->middleware(['auth', 'student', 'verified']);
+  Route::post('/exams/submit/{id}', [ExamController::class, 'submit'])->middleware(['auth', 'student', 'verified']);
+
+// End Exam Route
   Route::get('/contact', [ContactController::class, 'index'])->middleware(['verified']);
   Route::post('/contact/message/send', [ContactController::class, 'send']);
 

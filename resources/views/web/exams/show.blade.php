@@ -56,9 +56,11 @@ Exams - {{ $exam->jname() }}
           </div>
           <!-- /blog post -->
 
-                      <div>
-                          <a href=" {{ url("/exams/show/questions/{$exam->id}") }} " class="main-button icon-button pull-left">{{ __('web.start_exam') }}</a>
-                      </div>
+          <form  action="{{ url("/exams/start/{$exam->id}") }}" method="post">
+            @csrf
+              <button type="submit" class="main-button icon-button pull-left">{{ __('web.start_exam') }}</button>
+          </form>
+
         </div>
         <!-- /main blog -->
 
