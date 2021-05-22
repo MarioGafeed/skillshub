@@ -48,6 +48,7 @@ Exams - {{ $exam->jname() }}
         <!-- main blog -->
         <div id="main" class="col-md-9">
 
+@include('web.inc.messages')
           <!-- blog post -->
           <div class="blog-post mb-5">
             <p>
@@ -56,10 +57,13 @@ Exams - {{ $exam->jname() }}
           </div>
           <!-- /blog post -->
 
-          <form  action="{{ url("/exams/start/{$exam->id}") }}" method="post">
-            @csrf
-              <button type="submit" class="main-button icon-button pull-left">{{ __('web.start_exam') }}</button>
-          </form>
+
+              @if($startShowexambtn )
+              <form  action="{{ url("exams/start/{$exam->id}") }}" method="post">
+                @csrf
+                  <button type="submit" class="main-button icon-button pull-left">{{ __('web.start_exam') }}</button>
+              </form>
+              @endif
 
         </div>
         <!-- /main blog -->

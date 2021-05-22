@@ -12,6 +12,15 @@ class ExamController extends Controller
     public function show($id)
     {
       $data['exam'] =  Exam::findOrFail($id);
+      $user = Auth::user();
+      $data['startShowexambtn'] = true;
+
+      if ($user !== null) {
+        $userexamPivotRow = $user->exams()->where('exam_id', $id)->first();
+        if ($userexamPivotRow !== null and $userexamPivotRow->pivot->status == 'closed') {
+          $data['startShowexambtn'] = false;
+        }
+      }
         return view('web.exams.show')->with($data);
     }
 
@@ -58,11 +67,17 @@ class ExamController extends Controller
       $submitTime = Carbon::now();
       $time_mins = $submitTime->diffInMinutes($starttime);
 
+
+      if ($time_mins > $pivotRow->duration_mins) {
+        $score = 0;
+      }
       // Update Pivot row
       $user->exams()->updateExistingPivot($examId, [
         'score'      => $score,
-        'time_mins' => $time_mins
+        'time_mins' => $time_mins,
+        'status'    => 'closed'
       ]);
+      $request->session()->flash("success", "You finish exam successfully with score: $score %");
       return redirect( url("exams/show/$examId") );
     }
 }
