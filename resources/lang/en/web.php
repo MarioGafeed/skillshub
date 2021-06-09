@@ -41,4 +41,13 @@ return [
   'eMessage'                         =>     'Enter Message',
   'sendMessage'                      =>     'Send Message',
 
+  'profile'                          =>     'Profile',
+  'id'                               =>     'ID',
+  'examname'                         =>     'Exam Name',
+  'score'                            =>     'Your Score',
+  'timeM'                            =>     'Time (M)',
+  'm'                                =>     '(M)',
+
+
+
 ];

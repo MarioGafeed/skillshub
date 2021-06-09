@@ -24,22 +24,31 @@ class ExamController extends Controller
         return view('web.exams.show')->with($data);
     }
 
-    public function start($examId)
+    public function start($examId, Request $request)
     {
       $user = Auth::user();
       $user->exams()->attach($examId);
-
+      $request->session()->flash('prev', "start/$examId");
       return redirect( url("exams/show/questions/$examId") );
     }
 
-    public function showquestions($id)
+    public function showquestions($examId,  Request $request)
     {
-      $data['exam'] =  Exam::findOrFail($id);
+      // Secure Inspector to show start exam from another exam id
+      if (session('prev') !== "start/$examId") {
+        return redirect( url("exams/show/$examId") );
+      }
+  // Secure Inspector from show submit from insepe
+      $request->session()->flash('Qprev', "questions/$examId");
+      $data['exam'] =  Exam::findOrFail($examId);
       return view('web.exams.showquestions')->with($data);
     }
 
     public function submit($examId, Request $request)
     {
+      if (session('Qprev') !==  "questions/$examId") {
+        return redirect( url("exams/show/$examId") );
+      }
       $request->validate([
         'answers'   => 'required|array',
         'answers.*' => 'required|in:1,2,3,4',

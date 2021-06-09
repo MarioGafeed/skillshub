@@ -63,7 +63,8 @@ Exams - {{ $exam->jname() }}
                 @csrf
                   <button type="submit" class="main-button icon-button pull-left">{{ __('web.start_exam') }}</button>
               </form>
-              @endif
+              54321`0
+            @endif
 
         </div>
         <!-- /main blog -->

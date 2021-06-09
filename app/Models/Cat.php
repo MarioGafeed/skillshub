@@ -21,4 +21,9 @@ class Cat extends Model
       $lang = $lang ?? App::getlocale(); // For Dashboard, ?? Means if $lang not null make $lang = App::getlocale();
       return json_decode($this->name)->$lang;
     }
+
+    public function scopeActive($query)
+    {
+      return $query->where('active', 1);  // ScopePopular:: U must use this fnction with Kamal Case,,To use In all where when need to filter to active..
+    }
 }
