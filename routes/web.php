@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Http\Controllers\admin\HomeController as AdminHomeController;
 use  App\Http\Controllers\web\HomeController;
 use  App\Http\Controllers\web\SkillController;
 use  App\Http\Controllers\web\CatController;
@@ -46,3 +47,9 @@ Route::post('/exams/start/{id}', [ExamController::class, 'start'])->middleware([
 Route::post('/exams/submit/{id}', [ExamController::class, 'submit'])->middleware(['auth', 'student', 'verified']);
 
 Route::get('/lang/set/{lang}', [LangController::class, 'set']);
+
+// Route for Dashboard
+Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function() {
+
+     Route::get('/', [AdminHomeController::class, 'index']);
+   });

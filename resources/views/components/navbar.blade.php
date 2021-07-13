@@ -29,10 +29,14 @@
                 @endguest
                 <!-- <input type="submit" name="" value="{{ __('web.signout') }}"> -->
                 @auth
+
                 @if(Auth::user()->role->name == 'student' )
                 <li><a id="  " href="{{url('/profile')}}">{{ __('web.profile') }} </a></li>
+                @else
+                <li><a id="  " href="{{url('/dashboard')}}">{{ __('web.dashboard') }} </a></li>
                 @endif
                   <li><a id="logout-link" href="#">{{ __('web.signout') }} </a></li>
+
                 @endauth
 
 

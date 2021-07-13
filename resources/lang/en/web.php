@@ -47,6 +47,7 @@ return [
   'score'                            =>     'Your Score',
   'timeM'                            =>     'Time (M)',
   'm'                                =>     '(M)',
+  'dashboard'                        =>     'Dashboard',
 
 
 
