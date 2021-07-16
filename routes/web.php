@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\admin\HomeController as AdminHomeController;
 use  App\Http\Controllers\admin\CatController as AdminCatController;
+use  App\Http\Controllers\admin\SkillController as AdminSkillController;
 use  App\Http\Controllers\web\HomeController;
 use  App\Http\Controllers\web\SkillController;
 use  App\Http\Controllers\web\CatController;
@@ -58,4 +59,10 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
      Route::post('/categories/update', [AdminCatController::class, 'update']);
      Route::get('/categories/toggle/{cat}', [AdminCatController::class, 'toggle']);
      Route::get('/categories/delete/{cat}', [AdminCatController::class, 'delete']);
+// For Skills
+     Route::get('/skills', [AdminSkillController::class, 'index']);
+     Route::post('/skills/store', [AdminSkillController::class, 'store']);
+     Route::post('/skills/update', [AdminSkillController::class, 'update']);
+     Route::get('/skills/toggle/{cat}', [AdminSkillController::class, 'toggle']);
+     Route::get('/skills/delete/{cat}', [AdminSkillController::class, 'delete']);
    });

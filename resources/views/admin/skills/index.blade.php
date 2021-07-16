@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">categories</h1>
+            <h1 class="m-0 text-dark">Skills</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">home</a></li>
-              <li class="breadcrumb-item active">categories</li>
+              <li class="breadcrumb-item active">Skills</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
               @include('admin.inc.messages')
               <div class="card">
                 <div class="card-header">
-                                <h3 class="card-title">All Categories</h3>
+                                <h3 class="card-title">All Skills</h3>
 
                                 <div class="card-tools">
                                   <!-- <div class="input-group input-group-sm" style="width: 150px;">
@@ -50,38 +50,46 @@
                   <thead>
                     <tr>
                       <th>ID</th>
+                      <th>Image</th>
                       <th>Name(en)</th>
                       <th>Name(ar)</th>
+                      <th>Category(en)</th>
+                      <th>Category(ar)</th>
                       <th>Active</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($cats As $cat)
+                    @foreach($skills As $skill)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td class="cat-name-en">{{ $cat->jname('en') }}</td>
-                      <td class="cat-name-ar">{{ $cat->jname('ar') }}</td>
+                      <div class="entry-thumb">
+                      <td class="skill-img"> <img src="{{ asset('uploads/'.$skill->img) }}" class="img-circle" alt="Skill Image" height="50px"> </td>
+                      </div>
+                      <td class="skill-name-en">{{ $skill->jname('en') }}</td>
+                      <td class="skill-name-ar">{{ $skill->jname('ar') }}</td>
+                      <td class="cat-name-ar">{{ $skill->cat->jname('en') }}</td>
+                      <td class="cat-name-ar">{{ $skill->cat->jname('ar') }}</td>
                       <td>
-                        @if(  $cat->active  )
+                        @if(  $skill->active  )
                         <span class="badge badge-success">Yes</span>
                         @else
                         <span class="badge badge-danger">No</span>
                         @endif
                         </td>
                       <td>
-                        <a href="{{ url("dashboard/categories/toggle/$cat->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
-                          <button type="button" class="btn btn-sm btn-info edit-btn" data-id="{{ $cat->id }}" data-name-en = "{{ $cat->jname('en') }}" data-name-ar = "{{ $cat->jname('ar') }}" data-toggle="modal" data-target="#edit-model">
+                        <a href="{{ url("dashboard/skills/toggle/$skill->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
+                          <button type="button" class="btn btn-sm btn-info edit-btn" data-id="{{ $skill->id }}" data-name-en = "{{ $skill->jname('en') }}" data-name-ar = "{{ $skill->jname('ar') }}" data-toggle="modal" data-target="#edit-model">
                               <i class="fas fa-edit"></i>
                          </button>
-                          <a href="{{ url("dashboard/categories/delete/$cat->id") }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></i></a>
+                          <a href="{{ url("dashboard/skills/delete/$skill->id") }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></i></a>
                       </td>
                     </tr>
                     @endforeach
                   </tbody>
                 </table>
                 <div class="d-flex my-3 justify-content-center">
-                  {{ $cats->links() }}
+                  {{ $skills->links() }}
                 </div>
 
               </div>
@@ -101,14 +109,14 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">Add Category</h4>
+                <h4 class="modal-title">Add Skill</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
                 <div class="modal-body">
-                    @include('admin.inc.errors')
-                  <form id="add-form" action="{{ url('dashboard/categories/store') }}" method="post">
+                  @include('admin.inc.errors')
+                  <form id="add-form" action="{{ url('dashboard/skills/store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                       <div class="col-6">
@@ -122,6 +130,30 @@
                           <label >Name(ar)</label>
                           <input type="text" name="name_ar" class="form-control" >
                         </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label for="exampleInputFile">Image</label>
+                            <div class="input-group">
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="img">
+                                <label class="custom-file-label">Choose File</label>
+                              </div>
+                              <!-- <div class="input-group-append">
+                                <span class="input-group-text" id="">Upload</span>
+                              </div> -->
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                            <div class="form-group">
+                              <label>Select Category</label>
+                            <select name="cat_id" class="form-control select2 select2-danger select2-hidden-accessible" data-dropdown-css-class="select2-danger" style="width: 100%;" data-select2-id="12" tabindex="-1" aria-hidden="true">
+                              @foreach($cats As $cat)
+                              <option value="{{ $cat->id }}" selected="selected" data-select2-id="14">{{ $cat->jname('en') }}</option>
+                              @endforeach
+                            </select>
+                          </div>
                       </div>
                     </div>
                   </form>
@@ -141,14 +173,14 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">Edit Category</h4>
+                <h4 class="modal-title">Edit Skill</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
                 <div class="modal-body">
-                    @include('admin.inc.errors')
-                  <form id="edit-form" action="{{ url('dashboard/categories/update') }}" method="post">
+              @include('admin.inc.errors')
+                  <form id="edit-form" action="{{ url('dashboard/skills/update') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="edit-form-id">
                     <div class="row">
@@ -165,6 +197,31 @@
                         </div>
                       </div>
                     </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                          <label for="exampleInputFile">Image</label>
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" name="img">
+                              <label class="custom-file-label">Choose File</label>
+                            </div>
+                            <!-- <div class="input-group-append">
+                              <span class="input-group-text" id="">Upload</span>
+                            </div> -->
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                          <div class="form-group">
+                            <label>Select Category</label>
+                          <select name="cat_id" id="edit-form-cat-id" class="form-control select2 select2-danger select2-hidden-accessible" data-dropdown-css-class="select2-danger" style="width: 100%;" data-select2-id="12" tabindex="-1" aria-hidden="true">
+                            @foreach($cats As $cat)
+                            <option value="{{ $cat->id }}" selected="selected" data-select2-id="14">{{ $cat->jname('en') }}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                    </div>
+                  </div>
                   </form>
                  </div>
               <div class="modal-footer justify-content-between">
@@ -185,11 +242,15 @@
         let id = $(this).attr('data-id')
         let nameEn = $(this).attr('data-name-en')
         let nameAr = $(this).attr('data-name-ar')
+        let img = $(this).attr('data-img')
+        let catId = $(this).attr('data-cat-id')
 
-        // console.log(id, nameEn, nameAr);
+        // console.log(id, nameEn, cat_id);
         $('#edit-form-id').val(id)
         $('#edit-form-nameEn').val(nameEn)
         $('#edit-form-nameAr').val(nameAr)
+        // $('#edit-form-img').val(img)
+        $('#edit-form-cat-id').val(catId)
       })
   </script>
 @endsection
