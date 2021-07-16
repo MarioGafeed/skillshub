@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\admin\HomeController as AdminHomeController;
+use  App\Http\Controllers\admin\CatController as AdminCatController;
 use  App\Http\Controllers\web\HomeController;
 use  App\Http\Controllers\web\SkillController;
 use  App\Http\Controllers\web\CatController;
@@ -52,4 +53,9 @@ Route::get('/lang/set/{lang}', [LangController::class, 'set']);
 Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function() {
 
      Route::get('/', [AdminHomeController::class, 'index']);
+     Route::get('/categories', [AdminCatController::class, 'index']);
+     Route::post('/categories/store', [AdminCatController::class, 'store']);
+     Route::post('/categories/update', [AdminCatController::class, 'update']);
+     Route::get('/categories/toggle/{cat}', [AdminCatController::class, 'toggle']);
+     Route::get('/categories/delete/{cat}', [AdminCatController::class, 'delete']);
    });
