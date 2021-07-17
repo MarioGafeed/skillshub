@@ -79,7 +79,7 @@
                         </td>
                       <td>
                         <a href="{{ url("dashboard/skills/toggle/$skill->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
-                          <button type="button" class="btn btn-sm btn-info edit-btn" data-id="{{ $skill->id }}" data-name-en = "{{ $skill->jname('en') }}" data-name-ar = "{{ $skill->jname('ar') }}" data-toggle="modal" data-target="#edit-model">
+                          <button type="button" class="btn btn-sm btn-info edit-btn" data-id="{{ $skill->id }}" data-name-en = "{{ $skill->jname('en') }}" data-name-ar = "{{ $skill->jname('ar') }}" data-cat-id = "{{ $skill->cat_id }}" data-toggle="modal" data-target="#edit-model">
                               <i class="fas fa-edit"></i>
                          </button>
                           <a href="{{ url("dashboard/skills/delete/$skill->id") }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></i></a>
@@ -197,6 +197,7 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row">
                     <div class="col-6">
                       <div class="form-group">
                           <label for="exampleInputFile">Image</label>
@@ -222,6 +223,7 @@
                         </div>
                     </div>
                   </div>
+                  </div>
                   </form>
                  </div>
               <div class="modal-footer justify-content-between">
@@ -245,7 +247,7 @@
         let img = $(this).attr('data-img')
         let catId = $(this).attr('data-cat-id')
 
-        // console.log(id, nameEn, cat_id);
+        console.log(id, nameEn, nameAr, catId);
         $('#edit-form-id').val(id)
         $('#edit-form-nameEn').val(nameEn)
         $('#edit-form-nameAr').val(nameAr)
