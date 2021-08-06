@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\admin\HomeController as AdminHomeController;
 use  App\Http\Controllers\admin\CatController as AdminCatController;
 use  App\Http\Controllers\admin\SkillController as AdminSkillController;
+use  App\Http\Controllers\admin\ExamController as AdminExamController;
 use  App\Http\Controllers\web\HomeController;
 use  App\Http\Controllers\web\SkillController;
 use  App\Http\Controllers\web\CatController;
@@ -65,4 +66,15 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
      Route::post('/skills/update', [AdminSkillController::class, 'update']);
      Route::get('/skills/toggle/{skill}', [AdminSkillController::class, 'toggle']);
      Route::get('/skills/delete/{skill}', [AdminSkillController::class, 'delete']);
+
+// For Exams
+     Route::get('/exams', [AdminExamController::class, 'index']);
+     Route::get('/exams/show/{exam}', [AdminExamController::class, 'show']);
+     Route::get('/exams/show/{id}/questions', [AdminExamController::class, 'showQuestions']);
+     Route::get('/exams/create', [AdminExamController::class, 'create']);
+     Route::post('/exams/store', [AdminExamController::class, 'store']);
+     Route::get('/exams/edit/{id}', [AdminExamController::class, 'edit']);
+     Route::post('/exams/update', [AdminExamController::class, 'update']);
+     Route::get('/exams/toggle/{skill}', [AdminExamController::class, 'toggle']);
+     Route::get('/exams/delete/{skill}', [AdminExamController::class, 'delete']);
    });

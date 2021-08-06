@@ -12,7 +12,7 @@ class Skillcontroller extends Controller
 {
   public function index()
   {
-    $data['skills'] = Skill::orderBy('id', 'DESC')->paginate(7);
+    $data['skills'] = Skill::orderBy('id', 'DESC')->paginate(10);
     $data['cats']   = Cat::select('id', 'name')->get();
     return view('admin.skills.index')->with($data);
   }
