@@ -26,7 +26,9 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="card-body">
+          <!-- <div class="col-md-10 offset-md-1 pb-3"> -->
+
+          <div class="card-body p-0">
                 <table class="table table-md">
                   <!-- <thead>
                     <tr>
@@ -74,9 +76,35 @@
                         {{ $exam->questions_no }}
                       </td>
                     </tr>
+                    <tr>
+                      <th>Diffculty</th>
+                      <td>
+                        {{ $exam->diff }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Duration (min.)</th>
+                      <td>
+                        {{ $exam->duration_mins }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Active</th>
+                      <td>
+                        @if($exam->active)
+                          <span class="badge bg-success">Yes</span>
+                        @else
+                          <span class="badge bg-danger">No</span>
+                        @endif
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
+              <!-- End card Body -->
+                  <a class="btn btn-sm btn-success" href="{{ url("dashboard/exams/show/$exam->id/questions") }}"> Show Questions </a>
+                  <a class="btn btn-sm btn-primary" href="{{ url()->previous() }}"> Back </a>
+            <!-- </div> -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->

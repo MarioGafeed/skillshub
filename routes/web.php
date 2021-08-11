@@ -70,7 +70,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
 // For Exams
      Route::get('/exams', [AdminExamController::class, 'index']);
      Route::get('/exams/show/{exam}', [AdminExamController::class, 'show']);
-     Route::get('/exams/show/{id}/questions', [AdminExamController::class, 'showQuestions']);
+     Route::get('/exams/show/{exam}/questions', [AdminExamController::class, 'showQuestions']);
      Route::get('/exams/create', [AdminExamController::class, 'create']);
      Route::post('/exams/store', [AdminExamController::class, 'store']);
      Route::get('/exams/edit/{id}', [AdminExamController::class, 'edit']);
