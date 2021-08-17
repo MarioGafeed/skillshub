@@ -102,9 +102,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <li class="nav-item">
             <a href="{{ url('/dashboard/exams') }}" class="nav-link">
-              <i class="nav-icon fas fa-brain"></i>
+              <i class="nav-icon far fa-clipboard"></i>
               <p>
                 exams
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ url('/dashboard/students') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-graduate"></i>
+              <p>
+                Students
               </p>
             </a>
           </li>

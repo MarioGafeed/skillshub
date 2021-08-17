@@ -17,10 +17,10 @@ class IsStudent
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {      
+    {
       if (Auth::user()->role->name == 'student' ) {
-        return redirect( url('/') );
+        return $next($request);        
       }
-        return $next($request);
+      return redirect( url('/') );
     }
 }

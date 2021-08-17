@@ -5,6 +5,7 @@ use  App\Http\Controllers\admin\HomeController as AdminHomeController;
 use  App\Http\Controllers\admin\CatController as AdminCatController;
 use  App\Http\Controllers\admin\SkillController as AdminSkillController;
 use  App\Http\Controllers\admin\ExamController as AdminExamController;
+use  App\Http\Controllers\admin\Studentcontroller;
 use  App\Http\Controllers\web\HomeController;
 use  App\Http\Controllers\web\SkillController;
 use  App\Http\Controllers\web\CatController;
@@ -70,11 +71,18 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
 // For Exams
      Route::get('/exams', [AdminExamController::class, 'index']);
      Route::get('/exams/show/{exam}', [AdminExamController::class, 'show']);
-     Route::get('/exams/show/{exam}/questions', [AdminExamController::class, 'showQuestions']);
+     Route::get('/exams/show-question/{exam}', [AdminExamController::class, 'showQuestions']);
      Route::get('/exams/create', [AdminExamController::class, 'create']);
+     Route::get('/exams/create-questions/{exam}', [AdminExamController::class, 'createQuestions']);
+     Route::post('/exams/store-questions/{exam}', [AdminExamController::class, 'storeQuestions']);
      Route::post('/exams/store', [AdminExamController::class, 'store']);
-     Route::get('/exams/edit/{id}', [AdminExamController::class, 'edit']);
-     Route::post('/exams/update', [AdminExamController::class, 'update']);
-     Route::get('/exams/toggle/{skill}', [AdminExamController::class, 'toggle']);
-     Route::get('/exams/delete/{skill}', [AdminExamController::class, 'delete']);
+     Route::get('/exams/edit/{exam}', [AdminExamController::class, 'edit']);
+     Route::post('/exams/update/{exam}', [AdminExamController::class, 'update']);
+     Route::get('/exams/edit-question/{exam}/{question}', [AdminExamController::class, 'editQuestion']);
+     Route::post('/exams/update-question/{exam}/{question}', [AdminExamController::class, 'updateQuestion']);
+     Route::get('/exams/toggle/{exam}', [AdminExamController::class, 'toggle']);
+     Route::get('/exams/delete/{exam}', [AdminExamController::class, 'delete']);
+
+  // For Students
+     Route::get('/students', [StudentController::class, 'index']);
    });

@@ -14,7 +14,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
               <li class="breadcrumb-item"><a href="{{ url('dashboard/exams') }}">exams</a></li>
-              <li class="breadcrumb-item"><a href="{{ url("dashboard/exams/show/$exam->id") }}">{{ $exam->name }}</a></li>
+              <li class="breadcrumb-item"><a href="{{ url("dashboard/exams/show/$exam->id") }}">{{ $exam->jname('en') }}</a></li>
               <li class="breadcrumb-item active">{{ $exam->jname('en') }} Questions</li>
             </ol>
           </div><!-- /.col -->
@@ -57,17 +57,9 @@
                     </td>
                     <td class="ques-name">{{ $ques->right_ans }}</td>
                     <td>
-                      <a href="{{ url("dashboard/exams/toggle/$exam->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
-                       <a href="{{ url("dashboard/exams/show/$exam->id") }}" class="btn btn-sm btn-info"  >
-                           <i class="fas fa-eye"></i>
-                      </a>
-                      <a href="{{ url("dashboard/exams/show/$exam->id/questions") }}" class="btn btn-sm btn-success">
-                          <i class="fas fa-question"></i>
-                     </a>
-                     <a href="{{ url("dashboard/exams/edit/$exam->id") }}" class="btn btn-sm btn-info"  >
+                     <a href="{{ url( "dashboard/exams/edit-question/{$exam->id}/{$ques->id}" ) }}" class="btn btn-sm btn-info"  >
                          <i class="fas fa-edit"></i>
                     </a>
-                        <a href="{{ url("dashboard/exams/delete/$exam->id") }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></i></a>
                     </td>
                   </tr>
                   @endforeach

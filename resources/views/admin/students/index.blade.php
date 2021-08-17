@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">exams</h1>
+            <h1 class="m-0 text-dark">Students</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">home</a></li>
-              <li class="breadcrumb-item active">exams</li>
+              <li class="breadcrumb-item active">Students</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
               @include('admin.inc.messages')
               <div class="card">
                 <div class="card-header">
-                                <h3 class="card-title">All exams</h3>
+                                <h3 class="card-title">All students</h3>
 
                                 <div class="card-tools">
                                   <!-- <div class="input-group input-group-sm" style="width: 150px;">
@@ -40,9 +40,9 @@
                                       <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                                     </div>
                                   </div> -->
-                                  <a href="{{ url('dashboard/exams/create') }}"  class="btn btn-sm btn-primary">
+                                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-model">
                                       Add New
-                                 </a>
+                                 </button>
                               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -50,54 +50,35 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Image</th>
-                      <th>Name(en)</th>
-                      <th>Name(ar)</th>
-                      <th>Skill(en)</th>
-                      <th>Skill(ar)</th>
-                      <th>Questions no</th>
-                      <th>Active</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>verified</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($exams As $exam)
+                    @foreach($students As $student)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <div class="entry-thumb">
-                      <td class="exam-img"> <img src="{{ asset('uploads/'.$exam->img) }}" class="img-circle" alt="exam Image" height="50px" width="80px"> </td>
-                      </div>
-                      <td class="exam-name-en">{{ $exam->jname('en') }}</td>
-                      <td class="exam-name-ar">{{ $exam->jname('ar') }}</td>
-                      <td class="skill-name-en">{{ $exam->skill->jname('en') }}</td>
-                      <td class="skill-name-ar">{{ $exam->skill->jname('ar') }}</td>
-                      <td >{{ $exam->questions_no }}</td>
+                      <td class="student-name">{{ $student->name }}</td>
+                      <td class="student-email">{{ $student->email }}</td>
                       <td>
-                        @if(  $exam->active  )
+                        @if(  $student->email_verified_at  )
                         <span class="badge badge-success">Yes</span>
                         @else
                         <span class="badge badge-danger">No</span>
                         @endif
                         </td>
                       <td>
-                        <a href="{{ url("dashboard/exams/toggle/$exam->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
-                         <a href="{{ url("dashboard/exams/show/$exam->id") }}" class="btn btn-sm btn-info"  >
-                             <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="{{ url("dashboard/exams/show-question/$exam->id") }}" class="btn btn-sm btn-success">
-                            <i class="fas fa-question"></i>
-                       </a>
-                       <a href="{{ url("dashboard/exams/edit/$exam->id") }}" class="btn btn-sm btn-info"  >
-                           <i class="fas fa-edit"></i>
-                      </a>
-                          <a href="{{ url("dashboard/exams/delete/$exam->id") }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></i></a>
+                          <a href="{{ url("dashboard/students/toggle/$student->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
+                          <a href="{{ url("/") }}" class="btn btn-sm btn-success"><i class="fas fa-percent"></i></a>                          
                       </td>
                     </tr>
                     @endforeach
                   </tbody>
                 </table>
                 <div class="d-flex my-3 justify-content-center">
-                  {{ $exams->links() }}
+                  {{ $students->links() }}
                 </div>
 
               </div>
@@ -112,12 +93,4 @@
   </div>
   <!-- /.content-wrapper -->
 
-
-
-@endsection
-
-@section('scripts')
-  <script>
-
-  </script>
 @endsection
