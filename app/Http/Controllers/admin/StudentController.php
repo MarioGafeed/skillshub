@@ -16,4 +16,33 @@ class StudentController extends Controller
       $data['students'] = User::where('role_id', 3)->orderby('id','desc')->paginate(10);
       return view('admin.students.index')->with($data);
     }
+
+    public function showScores($id)
+    {
+      $student = User::findOrFail($id);
+      if ($student->role->name !== 'student' ) {
+        return back();
+      }
+        $data['student'] = $student;
+        $data['exams']    = $student->exams;
+        return view('admin.students.show-scores')->with($data);
+    }
+
+    public function openExam($studentId, $examId)
+    {
+      $student = User::findOrFail($studentId);
+      $student->exams()->updateExistingPivot($examId, [
+        'status' => 'opened'
+      ]);      
+      return back();
+    }
+
+    public function closeExam($studentId, $examId)
+    {
+      $student = User::findOrFail($studentId);
+      $student->exams()->updateExistingPivot($examId, [
+        'status' => 'closed'
+      ]);
+      return back();
+    }
 }

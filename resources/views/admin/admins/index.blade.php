@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Students</h1>
+            <h1 class="m-0 text-dark">Admins</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">home</a></li>
-              <li class="breadcrumb-item active">Students</li>
+              <li class="breadcrumb-item active">Admins</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
               @include('admin.inc.messages')
               <div class="card">
                 <div class="card-header">
-                                <h3 class="card-title">All students</h3>
+                                <h3 class="card-title">All Admins</h3>
 
                                 <div class="card-tools">
                                   <!-- <div class="input-group input-group-sm" style="width: 150px;">
@@ -40,9 +40,9 @@
                                       <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                                     </div>
                                   </div> -->
-                                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-model">
+                                  <a href="{{url('dashboard/admins/create')}}" class="btn btn-sm btn-primary" >
                                       Add New
-                                 </button>
+                                 </a>
                               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -52,33 +52,38 @@
                       <th>ID</th>
                       <th>Name</th>
                       <th>Email</th>
+                      <th>Role</th>
                       <th>verified</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($students As $student)
+                    @foreach($admins As $admin)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td class="student-name">{{ $student->name }}</td>
-                      <td class="student-email">{{ $student->email }}</td>
+                      <td class="admin-name">{{ $admin->name }}</td>
+                      <td class="admin-email">{{ $admin->email }}</td>
+                      <td class="admin-email">{{ $admin->role->name }}</td>
                       <td>
-                        @if(  $student->email_verified_at  )
+                        @if(  $admin->email_verified_at  )
                         <span class="badge badge-success">Yes</span>
                         @else
                         <span class="badge badge-danger">No</span>
                         @endif
                         </td>
-                      <td>
-                          <a href="{{ url("dashboard/students/toggle/$student->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
-                          <a href="{{ url("dashboard/students/show-scores/$student->id") }}" target="_blank" class="btn btn-sm btn-success"><i class="fas fa-percent"></i></a>                          
+                        <td>
+                          @if($admin->role->name == 'admin')
+                              <a href="{{ url("dashboard/admins/promote/$admin->id") }}" class="btn btn-sm btn-danger"><i class="fas fa-level-up-alt"></i></a>
+                          @else
+                                <a href="{{ url("dashboard/admins/demote/$admin->id") }}" class="btn btn-sm btn-success"><i class="fas fa-level-down-alt"></i></a>
+                          @endif
                       </td>
                     </tr>
                     @endforeach
                   </tbody>
                 </table>
                 <div class="d-flex my-3 justify-content-center">
-                  {{ $students->links() }}
+                  {{ $admins->links() }}
                 </div>
 
               </div>
