@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ url('/dashboard/categories') }}" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
-                categories
+                Categories
               </p>
             </a>
           </li>
@@ -103,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ url('/dashboard/exams') }}" class="nav-link">
               <i class="nav-icon far fa-clipboard"></i>
               <p>
-                exams
+                Exams
               </p>
             </a>
           </li>
