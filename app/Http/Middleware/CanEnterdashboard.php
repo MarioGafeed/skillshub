@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class CanEnterdashboard
+class CanEnterDashboard
 {
     /**
      * Handle an incoming request.
