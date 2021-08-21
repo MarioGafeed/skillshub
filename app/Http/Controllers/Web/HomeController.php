@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\web;
+namespace App\Http\Controllers\Web;
 use App\Models\Cat;
 use App\Http\Controllers\controller;
 
