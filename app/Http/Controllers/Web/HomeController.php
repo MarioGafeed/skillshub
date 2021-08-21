@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 use App\Models\Cat;
-use App\Http\Controllers\controller;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
