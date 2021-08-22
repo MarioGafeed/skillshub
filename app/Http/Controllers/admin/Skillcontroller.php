@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Skill;
 use App\Models\Cat;
 
-class Skillcontroller extends Controller
+class SkillController extends Controller
 {
   public function index()
   {

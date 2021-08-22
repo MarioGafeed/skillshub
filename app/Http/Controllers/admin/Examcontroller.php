@@ -9,7 +9,7 @@ use App\Models\Exam;
 use App\Models\Question;
 use App\Models\Skill;
 
-class Examcontroller extends Controller
+class ExamController extends Controller
 {
   public function index()
   {
