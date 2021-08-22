@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use app\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
@@ -33,7 +33,7 @@ class StudentController extends Controller
       $student = User::findOrFail($studentId);
       $student->exams()->updateExistingPivot($examId, [
         'status' => 'opened'
-      ]);      
+      ]);
       return back();
     }
 
