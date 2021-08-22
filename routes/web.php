@@ -7,13 +7,13 @@ use  App\Http\Controllers\admin\SkillController as AdminSkillController;
 use  App\Http\Controllers\admin\ExamController as AdminExamController;
 use  App\Http\Controllers\admin\StudentController;
 use  App\Http\Controllers\admin\AdminController;
-use  App\Http\Controllers\web\HomeController;
-use  App\Http\Controllers\web\SkillController;
-use  App\Http\Controllers\web\CatController;
-use  App\Http\Controllers\web\ExamController;
-use  App\Http\Controllers\web\ContactController;
-use  App\Http\Controllers\web\ProfileController;
-use  App\Http\Controllers\web\LangController;
+use  App\Http\Controllers\Web\HomeController;
+use  App\Http\Controllers\Web\SkillController;
+use  App\Http\Controllers\Web\CatController;
+use  App\Http\Controllers\Web\ExamController;
+use  App\Http\Controllers\Web\ContactController;
+use  App\Http\Controllers\Web\ProfileController;
+use  App\Http\Controllers\Web\LangController;
 
 /*
 |--------------------------------------------------------------------------
