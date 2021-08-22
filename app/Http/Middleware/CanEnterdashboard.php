@@ -12,7 +12,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CanEnterDashboard
+class CanEnterdashboard
 {
     /**
      * Handle an incoming request.
