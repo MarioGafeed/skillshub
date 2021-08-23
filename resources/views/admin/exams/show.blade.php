@@ -102,8 +102,10 @@
                 </table>
               </div>
               <!-- End card Body -->
+              <div class="col-12">
                   <a class="btn btn-sm btn-success" href="{{ url("dashboard/exams/show-question/$exam->id") }}"> Show Questions </a>
                   <a class="btn btn-sm btn-primary" href="{{ url()->previous() }}"> Back </a>
+              </div>
             <!-- </div> -->
         </div>
         <!-- /.row -->

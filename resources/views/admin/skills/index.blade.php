@@ -179,7 +179,7 @@
                 </button>
               </div>
                 <div class="modal-body">
-              @include('admin.inc.errors')
+                  @include('admin.inc.errors')
                   <form id="edit-form" action="{{ url('dashboard/skills/update') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="edit-form-id">
@@ -223,7 +223,7 @@
                         </div>
                     </div>
                   </div>
-                  </div>
+                
                   </form>
                  </div>
               <div class="modal-footer justify-content-between">

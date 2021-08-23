@@ -31,7 +31,6 @@
               <div class="card">
                 <div class="card-header">
                                 <h3 class="card-title">All students</h3>
-
                                 <div class="card-tools">
                                   <!-- <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -71,7 +70,7 @@
                         </td>
                       <td>
                           <a href="{{ url("dashboard/students/toggle/$student->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
-                          <a href="{{ url("dashboard/students/show-scores/$student->id") }}" target="_blank" class="btn btn-sm btn-success"><i class="fas fa-percent"></i></a>                          
+                          <a href="{{ url("dashboard/students/show-scores/$student->id") }}" target="_blank" class="btn btn-sm btn-success"><i class="fas fa-percent"></i></a>
                       </td>
                     </tr>
                     @endforeach

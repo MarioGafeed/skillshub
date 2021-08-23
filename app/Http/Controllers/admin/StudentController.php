@@ -44,4 +44,11 @@ class StudentController extends Controller
       ]);
       return back();
     }
+    public function toggle(User $user)
+    {
+      $user->update([
+        'active' => ! $user->active
+      ]);
+      return back();
+    }
 }
