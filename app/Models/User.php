@@ -22,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'role_id',
+        'active'
     ];
 
     /**
@@ -53,5 +54,10 @@ class User extends Authenticatable implements MustVerifyEmail
       return $this->BelongsToMany(Exam::class)
        ->withPivot('score','time_mins','status')
        ->withTimestamps();
+    }
+
+    public function scopeActive($query)
+    {
+      return $query->where('active', 1);  // ScopePopular:: U must use this fnction with Kamal Case,,To use In all where when need to filter to active..
     }
 }

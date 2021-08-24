@@ -52,6 +52,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>verified</th>
+                      <th>Active</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -67,6 +68,13 @@
                         @else
                         <span class="badge badge-danger">No</span>
                         @endif
+                        </td>
+                        <td>
+                          @if(  $student->active  )
+                          <span class="badge badge-success">Yes</span>
+                          @else
+                          <span class="badge badge-danger">No</span>
+                          @endif
                         </td>
                       <td>
                           <a href="{{ url("dashboard/students/toggle/$student->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>

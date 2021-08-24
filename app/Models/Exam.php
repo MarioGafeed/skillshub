@@ -44,8 +44,4 @@ class Exam extends Model
         {
           return $query->where('active', 1);  // ScopePopular:: U must use this fnction with Kamal Case,,To use In all where when need to filter to active..
         }
-
-
-
-
 }
