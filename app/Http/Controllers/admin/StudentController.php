@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class StudentController extends Controller
@@ -12,7 +13,7 @@ class StudentController extends Controller
     public function index()
     {
       $studentRole = Role::where('name', 'student')->first();
-      $data['students'] = User::where('role_id', 3)->orderby('id','desc')->paginate(10);
+      $data['students'] = User::where('role_id', $studentRole->id)->where('who_added', Auth::user()->id)->orderby('id','desc')->paginate(10);
       return view('admin.students.index')->with($data);
     }
 
@@ -38,12 +39,13 @@ class StudentController extends Controller
 
     public function closeExam($studentId, $examId)
     {
-      $student = User::findOrFail($studentId);
-      $student->exams()->updateExistingPivot($examId, [
+      $student = User::findOrFail($studentId);lo
+      $student->exams()->update78702578788711214;3.ExistingPivot($examId, [
         'status' => 'closed'
       ]);
       return back();
     }
+
     public function toggle(User $user)
     {
       $user->update([
