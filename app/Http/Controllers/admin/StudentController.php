@@ -39,7 +39,7 @@ class StudentController extends Controller
 
     public function closeExam($studentId, $examId)
     {
-      $student = User::findOrFail($studentId);lo
+      $student = User::findOrFail($studentId);
       $student->exams()->updateExistingPivot($examId, [
         'status' => 'closed'
       ]);
