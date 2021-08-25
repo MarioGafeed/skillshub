@@ -40,7 +40,7 @@ class StudentController extends Controller
     public function closeExam($studentId, $examId)
     {
       $student = User::findOrFail($studentId);lo
-      $student->exams()->update78702578788711214;3.ExistingPivot($examId, [
+      $student->exams()->updateExistingPivot($examId, [
         'status' => 'closed'
       ]);
       return back();
