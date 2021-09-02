@@ -62,8 +62,7 @@ Exams - {{ $exam->jname() }}
               <form  action="{{ url("exams/start/{$exam->id}") }}" method="post">
                 @csrf
                   <button type="submit" class="main-button icon-button pull-left">{{ __('web.start_exam') }}</button>
-              </form>
-              54321`0
+              </form>              
             @endif
 
         </div>

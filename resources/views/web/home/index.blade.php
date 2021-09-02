@@ -16,7 +16,7 @@
 							<div class="col-md-8">
 								<h1 class="white-text">{{ __('web.heroTitle') }}</h1>
 								<p class="lead white-text">{{ __('web.heroDesc') }}</p>
-								<a class="main-button icon-button" href="#">{{ __('web.heroDesc') }}</a>
+								<a class="main-button icon-button" href="{{ url("/login") }}">{{ __('web.heroDesc') }}</a>
 							</div>
 						</div>
 					</div>
