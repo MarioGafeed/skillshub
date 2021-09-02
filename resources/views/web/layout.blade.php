@@ -87,7 +87,7 @@
           <!-- copyright -->
           <div class="col-md-8 col-md-pull-4">
             <div class="footer-copyright">
-              <span>&copy; Copyright 2021. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{{ url('/') }}">{{ __('web.SkillsHub') }}</a></span>
+              <span>&copy; Copyright 2021. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{{ url('/') }}">Eng Mario 01273443918</a></span>
             </div>
           </div>
           <!-- /copyright -->
