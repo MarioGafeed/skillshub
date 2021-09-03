@@ -51,8 +51,9 @@
             <input class="input" type="text" name="name" placeholder="{{ __('web.name') }}">
             <input class="input" type="email" name="email" placeholder="{{ __('web.email') }}">
             <input class="input" type="password" name="password" placeholder="{{ __('web.password') }}">
-            <input class="input" type="password" name="password_confirmation" placeholder="{{ __('web.password_confirm') }}">          </form>
+            <input class="input" type="password" name="password_confirmation" placeholder="{{ __('web.password_confirm') }}">
             <button type="submit" class="main-button icon-button pull-right">{{ __('web.signup') }}</button>
+          </form>
         </div>
       </div>
       <!-- /login form -->
