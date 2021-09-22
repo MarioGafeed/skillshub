@@ -11,6 +11,7 @@ class SkillController extends Controller
     public function show($id)
     {
       $data['skill'] = Skill::findOrFail($id);
-       return view('web.skills.show')->with($data);
+      $data['exams'] = $data['skill']->exams()->active()->paginate(4);      
+      return view('web.skills.show')->with($data);
     }
 }

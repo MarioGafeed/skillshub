@@ -138,9 +138,11 @@ class ExamController extends Controller
       'diff'             => 'required|integer|min:1|max:5',
       'duration_mins'    => 'required|integer|min:1',
     ]);
+
     $path = $exam->img;
+
     if ($request->hasfile('img')) {
-      Storage::delete($path);
+      Storage::delete($path); 
       storage::putfile("exams", $request->file('img'));
     }
     $exam->update([
@@ -152,11 +154,13 @@ class ExamController extends Controller
         'en' => $request->desc_en,
         'ar' => $request->desc_ar
       ]),
-      'img' => $path,
+      'img'      => $path,
       'skill_id' => $request->skill_id,
       'diff'     => $request->diff,
       'duration_mins'     => $request->duration_mins,
     ]);
+
+
     $request->session()->flash('mgs', 'row updated successfully');
     return redirect( url("dashboard/exams/show/{$exam->id}") );
   }

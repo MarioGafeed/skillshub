@@ -3,6 +3,13 @@
 return [
   'home'                             =>     'Home',
   'cats'                             =>     'Categories',
+  'skill'                            =>     'Skill:',
+  'skills'                           =>     'Skills',
+  'question'                         =>     'Question:',
+  'questions'                        =>     'Questions:',
+  'duration'                         =>     'Duration:',
+  'diff'                             =>     'Difficulty:',
+  'min'                              =>     'Minutes',
   'contact'                          =>     'Contact',
   'signin'                           =>     'Signin',
   'signup'                           =>     'Signup',
@@ -13,6 +20,8 @@ return [
   'password_confirm'                 =>     'Password Confirm',
   'remember'                         =>     'Remember Me',
   'resend_mail'                      =>     'Resend verification Email',
+  'verify_mail'                      =>     'A verification email sent successfully, please check your inbox..',
+  'verify_email'                     =>     'Email Verification..',
   'verify_problem'                   =>     'If the previous one was accidentally deleted or lost.',
   'forgot_pass'                      =>     'Forgot password?',
   'submit'                           =>     'Submit',
@@ -49,6 +58,7 @@ return [
   'timeM'                            =>     'Time (M)',
   'm'                                =>     '(M)',
   'dashboard'                        =>     'Dashboard',
+  'exam_before'                      =>     'You entered this exam before, Please contact your teacher if you want to enter it again.',
 
 
 

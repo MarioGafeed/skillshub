@@ -2,7 +2,7 @@
 
 
 @section('title')
- {{ __('verify_mail') }}
+ {{ __('web.verify_email') }}
 @endsection
 
 @section('section')
@@ -12,7 +12,7 @@
   <!-- Contact -->
   <div id="contact" class="section">
     <div class="alert alert-success">
-      A verification email sent successfully, please check your inbox..
+      {{ __('web.verify_mail') }}
     </div>
 
     <!-- container -->

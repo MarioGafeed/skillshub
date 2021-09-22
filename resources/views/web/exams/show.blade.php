@@ -19,7 +19,7 @@ Exams - {{ $exam->jname() }}
       <div class="row">
         <div class="col-md-10 col-md-offset-1 text-center">
           <ul class="hero-area-tree">
-            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="{{ url('/') }}">{{ __('web.home') }}</a></li>
             <li><a href="category.html">{{ $exam->skill->cat->jname() }}</a></li>
             <li><a href="category.html">{{ $exam->skill->jname() }}</a></li>
             <li>{{ $exam->jname() }}</li>
@@ -53,17 +53,22 @@ Exams - {{ $exam->jname() }}
           <div class="blog-post mb-5">
             <p>
                             {{ $exam->jdesc() }}
-                          </p>
+            </p>
           </div>
           <!-- /blog post -->
 
 
-              @if($startShowexambtn )
+              @if(! $startShowexambtn )
+              <div class="alert alert-info" role="alert">
+              {{ __('web.exam_before')}}
+            </div>
+              @else
               <form  action="{{ url("exams/start/{$exam->id}") }}" method="post">
                 @csrf
-                  <button type="submit" class="main-button icon-button pull-left">{{ __('web.start_exam') }}</button>
-              </form>              
+                <button type="submit" class="main-button icon-button pull-left">{{ __('web.start_exam') }}</button>
+              </form>
             @endif
+
 
         </div>
         <!-- /main blog -->
@@ -73,10 +78,10 @@ Exams - {{ $exam->jname() }}
 
           <!-- exam details widget -->
                       <ul class="list-group">
-                          <li class="list-group-item">Skill: {{ $exam->skill->jname() }}</li>
-                          <li class="list-group-item">Questions: {{ $exam->questions_no }}</li>
-                          <li class="list-group-item">Duration: {{ $exam->duration_mins }} mins</li>
-                          <li class="list-group-item">Difficulty:
+                          <li class="list-group-item">{{__('web.skill')}} {{ $exam->skill->jname() }}</li>
+                          <li class="list-group-item">{{__('web.question')}} {{ $exam->questions_no }}</li>
+                          <li class="list-group-item">{{ __('web.duration') }} {{ $exam->duration_mins }} {{__('web.min')}}</li>
+                          <li class="list-group-item">{{__('web.diff')}}
                             @for($i=1; $i<=$exam->diff; $i++)
                             <i class="fa fa-star"></i>
                             @endfor

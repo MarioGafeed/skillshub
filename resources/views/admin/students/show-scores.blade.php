@@ -51,8 +51,8 @@
                       <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $exam->jname('en') }}</td>
-                        <td>{{ $exam->pivot->score }}</td>
-                        <td>{{ $exam->pivot->score }}</td>
+                        <td>{{ $exam->pivot->score }} %</td>
+                        <td>{{ $exam->pivot->time_mins }} M</td>
                         <td>{{ $exam->pivot->created_at }}</td>
                         <td>{{ $exam->pivot->status }}</td>
                         <td>

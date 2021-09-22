@@ -97,7 +97,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>Diffculty</label>
-                      <input type="number" name="diff" class="form-control"  placeholder="Diffculty">
+                      <input type="number" name="diff" min="1" max="5" class="form-control"  placeholder="Diffculty">
                     </div>
                   </div>
 
@@ -107,16 +107,11 @@
                       <input type="number" name="duration_mins" class="form-control"  placeholder="Duration">
                     </div>
                   </div>
-
                 </div>
-
                 <div>
                   <button type="submit" class="btn btn-success">Submit</button>
                   <a href="{{ url()->previous() }}" class="btn btn-primary">back</a>
                 </div>
-
-
-
             </div>
           </form>
 

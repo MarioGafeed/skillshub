@@ -124,7 +124,7 @@
               <!-- /exam details widget -->
 
                 <!-- Time down Js via timecircles js -->
-              <div class="duration-countdown" data-timer=" 20 "></div>
+              <div class="duration-countdown" data-timer=" {{ $exam->duration_mins * 60 }} "></div>
 
 
 

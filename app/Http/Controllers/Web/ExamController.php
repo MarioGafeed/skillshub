@@ -79,10 +79,15 @@ class ExamController extends Controller
       // Calculate Time
       $user = Auth::user();
       $pivotRow = $user->exams()->where('exam_id', $examId)->first();
-      $starttime =  $pivotRow->pivot->created_at;
+      if ($pivotRow->pivot->updated_at) {
+        $starttime =  $pivotRow->pivot->updated_at;
+      }
+      else {      
+        $starttime =  $pivotRow->pivot->created_at;
+      }
       $submitTime = Carbon::now();
-      $time_mins = $submitTime->diffInMinutes($starttime);
 
+      $time_mins = $submitTime->diffInMinutes($starttime);
 
       if ($time_mins > $pivotRow->duration_mins) {
         $score = 0;
