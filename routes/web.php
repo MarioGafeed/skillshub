@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use  App\Http\Controllers\admin\HomeController as AdminHomeController;
 use  App\Http\Controllers\admin\CatController as AdminCatController;
 use  App\Http\Controllers\admin\SkillController as AdminSkillController;
@@ -89,7 +90,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
      Route::get('/students/show-scores/{id}', [StudentController::class, 'showScores']);
      Route::get('/students/open-exam/{studentId}/{examId}', [StudentController::class, 'openExam']);
      Route::get('/students/close-exam/{studentId}/{examId}', [StudentController::class, 'closeExam']);
-     Route::get('/students/toggle/{user}', [StudentController::class, 'toggle']);    
+     Route::get('/students/toggle/{user}', [StudentController::class, 'toggle']);
 
 // for Admins
      Route::middleware('superadmin')->group(function(){
@@ -100,3 +101,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
      Route::get('admins/demote/{id}', [AdminController::class, 'demote']);
       });
    });
+
+   // Authentication...
+       Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+           ->middleware(['guest:'.config('fortify.guard'),'lang'])
+           ->name('login');
