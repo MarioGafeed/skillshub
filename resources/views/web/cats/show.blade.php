@@ -53,7 +53,7 @@
 								<div class="single-blog">
 									<div class="blog-img">
 										<a href="{{ url("/skills/show/{$skill->id}") }}">
-											<img src="{{ asset("uploads/$skill->img") }}" alt="">
+											<img src="{{ asset("uploads/{$skill->img}") }}" alt="" height="200px">
 										</a>
 									</div>
 									<h4><a href="{{ url("/skills/show/{$skill->id}")  }}">{{$skill->jname()}}</a></h4>

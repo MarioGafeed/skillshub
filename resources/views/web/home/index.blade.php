@@ -47,7 +47,7 @@
 							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="course">
 									<a href="{{ url("exams/show/{$exam->id}") }}" class="course-img">
-										<img src="{{ asset('uploads/'.$exam->img) }}" alt="{{ $exam->jname('en') }}">
+										<img src="{{ asset('uploads/'.$exam->img) }}" alt="{{ $exam->jname('en') }}" height="200px">
 										<i class="course-link-icon fa fa-link"></i>
 									</a>
 									<a class="course-title" href="{{ url("exams/show/{$exam->id}") }}">{{ $exam->jname('en') }}</a>
