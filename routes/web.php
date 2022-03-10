@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use  App\Http\Controllers\admin\HomeController as AdminHomeController;
 use  App\Http\Controllers\admin\CatController as AdminCatController;
 use  App\Http\Controllers\admin\SkillController as AdminSkillController;
@@ -44,10 +43,10 @@ Route::middleware('lang')->group(function() {
 
 
 // End Exam Route
-  Route::get('/contact', [ContactController::class, 'index'])->middleware(['verified', 'lang']);
+  Route::get('/contact', [ContactController::class, 'index'])->middleware(['verified']);
   Route::post('/contact/message/send', [ContactController::class, 'send']);
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth', 'student', 'verified']);
-
+});
 
 Route::post('/exams/start/{id}', [ExamController::class, 'start'])->middleware(['auth', 'student', 'verified', 'can-enter-exam']);
 Route::post('/exams/submit/{id}', [ExamController::class, 'submit'])->middleware(['auth', 'student', 'verified']);
@@ -101,8 +100,3 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
      Route::get('admins/demote/{id}', [AdminController::class, 'demote']);
       });
    });
-});
-   // Authentication...
-       Route::get('/login', [AuthenticatedSessionController::class, 'create'])
-           ->middleware(['guest:'.config('fortify.guard'),'lang'])
-           ->name('login');

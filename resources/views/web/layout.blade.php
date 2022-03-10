@@ -22,6 +22,9 @@
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href=" {{ asset('web/css/style.css') }}"/>
 
+		<!-- notifications toastr -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 		<!-- Dynamic Style -->
 		@yield('styles')
 
@@ -31,6 +34,8 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+
+
 
     </head>
 	<body>
@@ -63,11 +68,7 @@
 		</header>
 		<!-- /Header -->
 
-
-
     @yield('section')
-
-
 
     <!-- Footer -->
     <footer id="footer" class="section">
@@ -111,12 +112,32 @@
     <script type="text/javascript" src="{{ asset('web/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('web/js/main.js') }}"></script>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <script type="text/javascript">
+
 	$('#logout-link').click(function(e) {
 		e.preventDefault()
 		$('#logout-form').submit()
 	})
 </script>
+
+	<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+	<script>
+
+		// Enable pusher logging - don't include this in production
+		Pusher.logToConsole = true;
+
+		var pusher = new Pusher('456de41ec81c87622fe5', {
+			cluster: 'eu'
+		});
+
+		var channel = pusher.subscribe('notifications-channel');
+		channel.bind('exam-added', function(data) {
+			toastr.success('تم إضافة اختبار جديد!', 'SkillsHub Says')
+		});
+	</script>
 
 	@yield('scripts')
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
+use App\Events\ExamAddedEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Exam;
@@ -70,6 +71,7 @@ class ExamController extends Controller
         'active' => 0,
       ]);
       // $request->session()->flash('prev', "exam/$exam->id");
+
       return redirect( url("dashboard/exams/create-questions/{$exam->id}") );
   }
 
@@ -117,6 +119,8 @@ class ExamController extends Controller
       'active' => '1'
     ]);
     // $request->session()->flash('prev', "exam/$exam->id");
+    event(new ExamAddedEvent);
+
     return redirect('dashboard/exams');
   }
 
@@ -142,7 +146,7 @@ class ExamController extends Controller
     $path = $exam->img;
 
     if ($request->hasfile('img')) {
-      Storage::delete($path); 
+      Storage::delete($path);
       storage::putfile("exams", $request->file('img'));
     }
     $exam->update([
