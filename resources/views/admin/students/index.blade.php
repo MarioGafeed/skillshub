@@ -39,9 +39,9 @@
                                       <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                                     </div>
                                   </div> -->
-                                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-model">
-                                      Add New
-                                 </button>
+                                  <a href="{{url('dashboard/students/create')}}" class="btn btn-sm btn-primary" >
+                                    Add New
+                               </a>
                               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">

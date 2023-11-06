@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 
 class StudentController extends Controller
@@ -15,6 +17,33 @@ class StudentController extends Controller
       $studentRole = Role::where('name', 'student')->first();
       $data['students'] = User::where('role_id', $studentRole->id)->where('who_added', Auth::user()->id)->orderby('id','desc')->paginate(10);
       return view('admin.students.index')->with($data);
+    }
+    // Create New Student from Instructor
+    public function create()
+    {
+      $data['roles'] = Role::select('id', 'name')->where('name', 'student')->get();
+      return view('admin.students.create')->with($data);
+    }
+
+    public function store(Request $request)
+    {
+      $request->validate([
+        'name'      => 'required|string|max:255',
+        'email'     => 'required|email|max:255|unique:users',
+        'password'  => 'required|string|min:3|max:12|confirmed',
+        'role_id'   => 'required|exists:roles,id',        
+      ]);
+
+      $user = User::create([
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'password' => Hash::make($request->password),
+        'role_id'  => $request->role_id,
+        'who_added'=> Auth::user()->id
+      ]);
+      event(new Registered($user));
+
+      return redirect(url('dashboard/students'));
     }
 
     public function showScores($id)

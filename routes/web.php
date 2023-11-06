@@ -88,6 +88,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
 
   // For Students
      Route::get('/students', [StudentController::class, 'index']);
+     Route::get('students/create', [StudentController::class, 'create']);
+     Route::post('students/store', [StudentController::class, 'store']);
      Route::get('/students/show-scores/{id}', [StudentController::class, 'showScores']);
      Route::get('/students/open-exam/{studentId}/{examId}', [StudentController::class, 'openExam']);
      Route::get('/students/close-exam/{studentId}/{examId}', [StudentController::class, 'closeExam']);
