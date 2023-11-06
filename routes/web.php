@@ -46,6 +46,7 @@ Route::middleware('lang')->group(function() {
   Route::get('/contact', [ContactController::class, 'index'])->middleware(['verified']);
   Route::post('/contact/message/send', [ContactController::class, 'send']);
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth', 'student', 'verified']);
+  Route::get('/profile/show_answers/{exam}', [ProfileController::class, 'show_answers'])->middleware(['auth', 'student', 'verified']);
 });
 
 Route::post('/exams/start/{id}', [ExamController::class, 'start'])->middleware(['auth', 'student', 'verified', 'can-enter-exam']);
@@ -54,7 +55,8 @@ Route::post('/exams/submit/{id}', [ExamController::class, 'submit'])->middleware
 Route::get('/lang/set/{lang}', [LangController::class, 'set']);
 
 // Route for Dashboard
-Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function() {
+Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function()
+ {
 
      Route::get('/', [AdminHomeController::class, 'index']);
      Route::get('/categories', [AdminCatController::class, 'index']);
@@ -90,6 +92,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard
      Route::get('/students/open-exam/{studentId}/{examId}', [StudentController::class, 'openExam']);
      Route::get('/students/close-exam/{studentId}/{examId}', [StudentController::class, 'closeExam']);
      Route::get('/students/toggle/{user}', [StudentController::class, 'toggle']);
+     Route::get('/students/show_answers/{studentId}/{examId}', [StudentController::class, 'show_answers']);
 
 // for Admins
      Route::middleware('superadmin')->group(function(){

@@ -40,7 +40,7 @@ class ExamController extends Controller
     }
 
     public function showquestions($examId,  Request $request)
-    {
+    {      
       // Secure Inspector to show start exam from another exam id
       if (session('prev') !== "start/$examId") {
         return redirect( url("exams/show/$examId") );
@@ -53,6 +53,8 @@ class ExamController extends Controller
 
     public function submit($examId, Request $request)
     {
+      $user = Auth::user();
+     
       if (session('Qprev') !==  "questions/$examId") {
         return redirect( url("exams/show/$examId") );
       }
@@ -69,6 +71,17 @@ class ExamController extends Controller
         if(isset( $request->answers[$question->id] ) ){
           $userAns  = $request->answers[$question->id];
           $rightAns = $question->right_ans;
+    
+          $user->questions()->attach($question->id);
+                 
+          $user->questions()->updateExistingPivot($question->id, 
+          [
+            'user_answer' => $userAns,
+            'right_ans'   => $rightAns,
+            'exam_id'   => $question->exam_id,
+          ]
+        );
+
           if ($userAns == $rightAns) {
             $points += 1;
           }

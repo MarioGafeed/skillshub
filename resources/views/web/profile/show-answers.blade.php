@@ -22,6 +22,7 @@
           <li>{{ __('web.profile') }}</li>
         </ul>
         <h1 class="white-text">{{ Auth::user()->name }} </h1>
+        <h3 class="white-text">{{ $exam->jname() }} </h3>
 
       </div>
     </div>
@@ -44,21 +45,28 @@
         <table class="table">
           <thead>
             <tr>
-              <th>{{ __('web.examname') }}</th>
-              <th>{{ __('web.score') }}%</th>
-              <th>{{ __('web.score') }}/</th>
-              <th>{{ __('web.timeM') }}</th>
+              <th>{{ __('web.ID') }}</th>
+              <th>{{ __('web.question') }}</th>
+              <th>{{ __('web.question_op1') }}</th>
+              <th>{{ __('web.question_op2') }}</th>
+              <th>{{ __('web.question_op3') }}</th>
+              <th>{{ __('web.question_op4') }}</th>
+              <th>{{ __('web.your_answer') }}</th>
+              <th>{{ __('web.right_answer') }}</th>            
             </tr>
           </thead>
 
           <tbody>
-            @foreach(Auth::user()->exams As $exam)
+            @foreach( $questions As $question)
               <tr>
-                <td> {{ $exam->jname() }} </td>
-                <td> {{ $exam->pivot->score }} %</td>
-                <td> <span><b>{{ number_format($exam->pivot->score * $exam->questions_no / 100) }}</b></span> / {{ $exam->questions_no }} </td>               
-                <td> {{ $exam->pivot->time_mins }} {{ __('web.m') }}</td>
-                <td><a href="{{ url("profile/show_answers/$exam->id") }}" target="_blank" class="btn btn-sm btn-success"><i class="fas fa-percent"></i></a></td>
+                <td>{{ $loop->iteration }}</td>
+                <td> {{ $question->title }} </td>
+                <td> {{ $question->op1 }} </td>
+                <td> {{ $question->op2 }} </td>
+                <td> {{ $question->op3 }} </td>
+                <td> {{ $question->op4 }} </td>
+                <td> {{ $question->pivot->user_answer }} </td>
+                <td> {{ $question->pivot->right_ans }} </td>                                                
               </tr>
             @endforeach
           </tbody>

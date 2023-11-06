@@ -23,8 +23,9 @@ class StudentController extends Controller
       if ($student->role->name !== 'student' ) {
         return back();
       }
-        $data['student'] = $student;
+        $data['student']  = $student;
         $data['exams']    = $student->exams;
+    
         return view('admin.students.show-scores')->with($data);
     }
 
@@ -44,6 +45,26 @@ class StudentController extends Controller
         'status' => 'closed'
       ]);
       return back();
+    }
+
+    public function show_answers($studentId, $examId)
+    {
+
+      $student = User::findOrFail($studentId);
+      if ($student->role->name !== 'student' ) {
+        return back();
+      }
+        $data['student']  = $student;
+        $data['questions']    = $student->questions->where('exam_id', $examId);
+    
+        return view('admin.students.show_answers')->with($data);
+
+      // $student = User::where('id', $studentId)->first();            
+      // $questions = $student->questions()->where('exam_id', $examId)->get();
+      // return view('admin.students.show_answers', [
+      //   'questions' => $questions,
+      //   'student ' => $student,
+      // ]);
     }
 
     public function toggle(User $user)

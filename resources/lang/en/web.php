@@ -59,6 +59,13 @@ return [
   'm'                                =>     '(M)',
   'dashboard'                        =>     'Dashboard',
   'exam_before'                      =>     'You entered this exam before, Please contact your teacher if you want to enter it again.',
+  'ID'                               =>     'ID',
+  'your_answer'                      =>     'Your Answer',
+  'right_answer'                     =>     'Right Answer',
+  'question_op1'                     =>     'Option1',
+  'question_op2'                     =>     'Option2',
+  'question_op3'                     =>     'Option3',
+  'question_op4'                     =>     'Option4',
 
 
 

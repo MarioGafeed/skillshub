@@ -8,13 +8,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Show Scores {{ $student->name }}</h1>
+            <h1 class="m-0 text-dark">Show Answers for {{ $student->name }}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
               <li class="breadcrumb-item"><a href="{{ url('dashboard/students') }}">Students</a></li>
-              <li class="breadcrumb-item active">Show Scores</li>
+              <li class="breadcrumb-item active">Show Answers</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -38,33 +38,26 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Exam</th>
-                        <th>Score</th>
-                        <th>Correct Answers</th>
-                        <th>Time (min)</th>
-                        <th>At</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th>Question</th>
+                        <th>Option1</th>
+                        <th>Option2</th>
+                        <th>Option3</th>
+                        <th>Option4</th>
+                        <th>Student's Answer</th>
+                        <th>Right Answer</th>                                               
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($exams As $exam)
+                      @foreach($questions As $question)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $exam->jname('en') }}</td>
-                        <td>{{ $exam->pivot->score }} %</td>
-                        <td> <span><b>{{ number_format($exam->pivot->score * $exam->questions_no / 100) }}</b></span> / {{ $exam->questions_no }} </td>
-                        <td>{{ $exam->pivot->time_mins }} M</td>
-                        <td>{{ $exam->pivot->created_at }}</td>
-                        <td>{{ $exam->pivot->status }}</td>
-                        <td>
-                            @if($exam->pivot->status == 'closed')
-                            <a href="{{ url("dashboard/students/open-exam/$student->id/$exam->id") }}" class="btn btn-sm btn-success"><i class="fas fa-lock-open"></i></a>
-                            @else
-                            <a href="{{ url("dashboard/students/close-exam/$student->id/$exam->id") }}" class="btn btn-sm btn-danger"><i class="fas fa-lock"></i></a>
-                            @endif
-                            <a href="{{ url("dashboard/students/show_answers/$student->id/$exam->id") }}" class="btn btn-sm btn-info"><i class="fas fa-question-circle"></i> </a>
-                        </td>                        
+                        <td>{{ $question->title }}</td>
+                        <td>{{ $question->op1 }}</td>
+                        <td>{{ $question->op2 }}</td>
+                        <td>{{ $question->op3 }}</td>
+                        <td>{{ $question->op4 }}</td>                        
+                        <td>{{ $question->pivot->user_answer }}</td>
+                        <td>{{ $question->pivot->right_ans }}</td>                                                
                       </tr>
                       @endforeach
                     </tbody>
