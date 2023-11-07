@@ -14,14 +14,14 @@ class AdminController extends Controller
     public function index()
     {
       $superAdminRole = Role::where('name', 'superadmin')->first();
-      $adminRole      = Role::where('name', 'admin')->first();
+      $adminRole      = Role::where('name', 'teacher')->first();
       $data['admins'] =  User::whereIn('role_id', [$superAdminRole->id, $adminRole->id])->orderby('id', 'DESC')->paginate(10);
       return view('admin.admins.index')->with($data);
     }
 
     public function create()
     {
-      $data['roles'] = Role::select('id', 'name')->whereIn('name', ['admin', 'superadmin'])->get();
+      $data['roles'] = Role::select('id', 'name')->whereIn('name', ['teacher', 'superadmin'])->get();
       return view('admin.admins.create')->with($data);
     }
 
@@ -57,7 +57,7 @@ class AdminController extends Controller
     {
       $superadmin = User::FindOrFail($id);
       $superadmin->update([
-        'role_id'=> Role::select('id')->where('name', 'admin')->first()->id
+        'role_id'=> Role::select('id')->where('name', 'teacher')->first()->id
       ]);
       return back();
     }

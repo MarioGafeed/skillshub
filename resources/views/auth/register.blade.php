@@ -47,9 +47,10 @@
           @include('web.inc.messages')
 
           <form method="post" action="{{ url('/register') }}">
-            @csrf
+            @csrf            
             <input class="input" type="text" name="name" placeholder="{{ __('web.name') }}">
-            <input class="input" type="email" name="email" placeholder="{{ __('web.email') }}">
+            <input class="input" type="text" name="phone" placeholder="{{ __('web.phone') }}">
+            <input class="input" type="email" name="email" placeholder="{{ __('web.email') }}">            
             <input class="input" type="password" name="password" placeholder="{{ __('web.password') }}">
             <input class="input" type="password" name="password_confirmation" placeholder="{{ __('web.password_confirm') }}">
             <button type="submit" class="main-button icon-button pull-right">{{ __('web.signup') }}</button>
