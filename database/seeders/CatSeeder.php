@@ -16,12 +16,12 @@ class CatSeeder extends Seeder
      */
     public function run()
     {   // Error Here
-       Cat::factory()->has(
-         Skill::Factory()->has(
-           Exam::Factory()->has(
-              Question::Factory()->count(15)
-             )->count(2)
-           )->count(8)
-         )->count(5)->create();
+      //  Cat::factory()->has(
+      //    Skill::Factory()->has(
+      //      Exam::Factory()->has(
+      //         Question::Factory()->count(15)
+      //        )->count(2)
+      //      )->count(8)
+      //    )->count(5)->create();
     }
 }
