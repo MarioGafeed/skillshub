@@ -11,7 +11,7 @@
 				<!-- /Backgound Image -->
 
 				<div class="home-wrapper">
-					<div class="container">
+					<div class="container" style="text-align: center">
 						<div class="row">
 							<div class="col-md-8">
 								<h1 class="white-text">{{ __('web.heroTitle') }}</h1>
@@ -29,10 +29,10 @@
 			<div id="courses" class="section">
 
 				<!-- container -->
-				<div class="container">
+				<div class="container" style="text-align: center;">
 
 					<!-- row -->
-					<div class="row">
+					<div class="row" >
 						<div class="section-header text-center">
 							<h2>{{ __('web.popularExamsTitle') }}</h2>
 							<p class="lead">{{ __('web.heroDesc') }}</p>

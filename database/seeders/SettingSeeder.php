@@ -16,7 +16,7 @@ class SettingSeeder extends Seeder
         Setting::create([
           'name' => 'SiteName',
           'email' => 'Contact@sitename.com',
-          'phone' => '01273443918',
+          'phone' => '01096389912',
           'fb' => 'www.facebook.com',
           'tw' => 'www.twitter.com',
           'insta' => 'www.insta.com',
