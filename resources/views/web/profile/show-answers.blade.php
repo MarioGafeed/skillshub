@@ -41,7 +41,7 @@
     <div class="row">
 
       <!-- login form -->
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-9 col-md-offset-1">
         <table class="table">
           <thead>
             <tr>
@@ -52,7 +52,10 @@
               <th>{{ __('web.question_op3') }}</th>
               <th>{{ __('web.question_op4') }}</th>
               <th>{{ __('web.your_answer') }}</th>
-              <th>{{ __('web.right_answer') }}</th>            
+              <th>{{ __('web.right_answer') }}</th> 
+              <th>{{ __('web.Updated_at') }}</th>           
+              <th>{{ __('web.exam') }}</th>                         
+                          
             </tr>
           </thead>
 
@@ -66,7 +69,13 @@
                 <td> {{ $question->op3 }} </td>
                 <td> {{ $question->op4 }} </td>
                 <td> {{ $question->pivot->user_answer }} </td>
-                <td> {{ $question->pivot->right_ans }} </td>                                                
+                <td> {{ $question->pivot->right_ans }} </td>   
+                <td> {{ $question->pivot->updated_at }} </td>   
+                @if(App::getlocale() == "en")
+                <td> {{  json_decode($question->exam->name)->en }} </td>
+               @else
+               <td> {{  json_decode($question->exam->name)->ar }} </td>
+               @endif                                                                                                            
               </tr>
             @endforeach
           </tbody>

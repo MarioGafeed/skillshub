@@ -88,7 +88,7 @@
           <!-- copyright -->
           <div class="col-md-8 col-md-pull-4">
             <div class="footer-copyright">
-              <span>&copy; Copyright 2021. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{{ url('/') }}">Al7ryt: 01096389912</a></span>
+              <span>&copy; Copyright 2024. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{{ url('/') }}">Al7ryt: 01096389912</a></span>
             </div>
           </div>
           <!-- /copyright -->

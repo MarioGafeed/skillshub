@@ -67,6 +67,9 @@ return [
   'question_op3'                     =>     'Option3',
   'question_op4'                     =>     'Option4',
   'phone'                            =>     'Phone',
+  'exam'                             =>     'Exam',
+  'Updated_at'                       =>     'DateTime',
+
 
 
 

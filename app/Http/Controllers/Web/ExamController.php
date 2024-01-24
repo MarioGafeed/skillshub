@@ -27,6 +27,7 @@ class ExamController extends Controller
     public function start($examId, Request $request)
     {
       $user = Auth::user();
+      
       if (! $user->exams->contains($examId)) {
         $user->exams()->attach($examId);
       }
@@ -78,7 +79,6 @@ class ExamController extends Controller
           [
             'user_answer' => $userAns,
             'right_ans'   => $rightAns,
-            'exam_id'   => $question->exam_id,
           ]
         );
 

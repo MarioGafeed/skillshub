@@ -10,7 +10,7 @@
                     <ul class="dropdown-menu">
                       @foreach($cats As $cat)
                       <li><a href="{{ url("categories/show/{$cat->id}") }}">
-                        <!-- @if(App::getlocale() == "en")
+                         @if(App::getlocale() == "en")
                          {{  json_decode($cat->name)->en }}
                         @else
                          {{  json_decode($cat->name)->ar }}
