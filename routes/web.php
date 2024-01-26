@@ -51,14 +51,13 @@ Route::post('/exams/submit/{id}', [ExamController::class, 'submit'])->middleware
 Route::get('/lang/set/{lang}', [LangController::class, 'set']);
 
 // Route for Dashboard
-Route::prefix('dashboard')->middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function()
+Route::middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function()
  {
-
-     Route::get('/', [AdminHomeController::class, 'index']);
-     Route::get('/categories', [AdminCatController::class, 'index']);
+     Route::get('dashboard/', [AdminHomeController::class, 'index']);
+     Route::get('dashboard/categories', [AdminCatController::class, 'index']);
      Route::post('/categories/store', [AdminCatController::class, 'store']);
      Route::post('/categories/update', [AdminCatController::class, 'update']);
-     Route::get('/categories/toggle/{cat}', [AdminCatController::class, 'toggle']);
+     Route::get('dashboard/categories/toggle/{cat}', [AdminCatController::class, 'toggle']);
      Route::get('/categories/delete/{cat}', [AdminCatController::class, 'delete']);
 // For Skills
      Route::get('/skills', [AdminSkillController::class, 'index']);
