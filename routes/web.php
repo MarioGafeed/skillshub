@@ -55,48 +55,48 @@ Route::middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function(
  {
      Route::get('dashboard/', [AdminHomeController::class, 'index']);
      Route::get('dashboard/categories', [AdminCatController::class, 'index']);
-     Route::post('/categories/store', [AdminCatController::class, 'store']);
-     Route::post('/categories/update', [AdminCatController::class, 'update']);
+     Route::post('dashboard/categories/store', [AdminCatController::class, 'store']);
+     Route::post('dashboard/categories/update', [AdminCatController::class, 'update']);
      Route::get('dashboard/categories/toggle/{cat}', [AdminCatController::class, 'toggle']);
-     Route::get('/categories/delete/{cat}', [AdminCatController::class, 'delete']);
+     Route::get('dashboard/categories/delete/{cat}', [AdminCatController::class, 'delete']);
 // For Skills
-     Route::get('/skills', [AdminSkillController::class, 'index']);
-     Route::post('/skills/store', [AdminSkillController::class, 'store']);
-     Route::post('/skills/update', [AdminSkillController::class, 'update']);
-     Route::get('/skills/toggle/{skill}', [AdminSkillController::class, 'toggle']);
-     Route::get('/skills/delete/{skill}', [AdminSkillController::class, 'delete']);
+     Route::get('dashboard/skills', [AdminSkillController::class, 'index']);
+     Route::post('dashboard/skills/store', [AdminSkillController::class, 'store']);
+     Route::post('dashboard/skills/update', [AdminSkillController::class, 'update']);
+     Route::get('dashboard/skills/toggle/{skill}', [AdminSkillController::class, 'toggle']);
+     Route::get('dashboard/skills/delete/{skill}', [AdminSkillController::class, 'delete']);
 
 // For Exams
-     Route::get('/exams', [AdminExamController::class, 'index']);
-     Route::get('/exams/show/{exam}', [AdminExamController::class, 'show']);
-     Route::get('/exams/show-question/{exam}', [AdminExamController::class, 'showQuestions']);
-     Route::get('/exams/create', [AdminExamController::class, 'create']);
-     Route::get('/exams/create-questions/{exam}', [AdminExamController::class, 'createQuestions']);
-     Route::post('/exams/store-questions/{exam}', [AdminExamController::class, 'storeQuestions']);
-     Route::post('/exams/store', [AdminExamController::class, 'store']);
-     Route::get('/exams/edit/{exam}', [AdminExamController::class, 'edit']);
-     Route::post('/exams/update/{exam}', [AdminExamController::class, 'update']);
-     Route::get('/exams/edit-question/{exam}/{question}', [AdminExamController::class, 'editQuestion']);
-     Route::post('/exams/update-question/{exam}/{question}', [AdminExamController::class, 'updateQuestion']);
-     Route::get('/exams/toggle/{exam}', [AdminExamController::class, 'toggle']);
-     Route::get('/exams/delete/{exam}', [AdminExamController::class, 'delete']);
+     Route::get('dashboard/exams', [AdminExamController::class, 'index']);
+     Route::get('dashboard/exams/show/{exam}', [AdminExamController::class, 'show']);
+     Route::get('dashboard/exams/show-question/{exam}', [AdminExamController::class, 'showQuestions']);
+     Route::get('dashboard/exams/create', [AdminExamController::class, 'create']);
+     Route::get('dashboard/exams/create-questions/{exam}', [AdminExamController::class, 'createQuestions']);
+     Route::post('dashboard/exams/store-questions/{exam}', [AdminExamController::class, 'storeQuestions']);
+     Route::post('dashboard/exams/store', [AdminExamController::class, 'store']);
+     Route::get('dashboard/exams/edit/{exam}', [AdminExamController::class, 'edit']);
+     Route::post('dashboard/exams/update/{exam}', [AdminExamController::class, 'update']);
+     Route::get('dashboard/exams/edit-question/{exam}/{question}', [AdminExamController::class, 'editQuestion']);
+     Route::post('dashboard/exams/update-question/{exam}/{question}', [AdminExamController::class, 'updateQuestion']);
+     Route::get('dashboard/exams/toggle/{exam}', [AdminExamController::class, 'toggle']);
+     Route::get('dashboard/exams/delete/{exam}', [AdminExamController::class, 'delete']);
 
   // For Students
-     Route::get('/students', [StudentController::class, 'index']);
-     Route::get('students/create', [StudentController::class, 'create']);
-     Route::post('students/store', [StudentController::class, 'store']);
-     Route::get('/students/show-scores/{id}', [StudentController::class, 'showScores']);
-     Route::get('/students/open-exam/{studentId}/{examId}', [StudentController::class, 'openExam']);
-     Route::get('/students/close-exam/{studentId}/{examId}', [StudentController::class, 'closeExam']);
-     Route::get('/students/toggle/{user}', [StudentController::class, 'toggle']);
-     Route::get('/students/show_answers/{studentId}/{examId}', [StudentController::class, 'show_answers']);
+     Route::get('dashboard/students', [StudentController::class, 'index']);
+     Route::get('dashboard/students/create', [StudentController::class, 'create']);
+     Route::post('dashboard/students/store', [StudentController::class, 'store']);
+     Route::get('dashboard/students/show-scores/{id}', [StudentController::class, 'showScores']);
+     Route::get('dashboard/students/open-exam/{studentId}/{examId}', [StudentController::class, 'openExam']);
+     Route::get('dashboard/students/close-exam/{studentId}/{examId}', [StudentController::class, 'closeExam']);
+     Route::get('dashboard/students/toggle/{user}', [StudentController::class, 'toggle']);
+     Route::get('dashboard/students/show_answers/{studentId}/{examId}', [StudentController::class, 'show_answers']);
 
 // for Admins
      Route::middleware('superadmin')->group(function(){
-     Route::get('admins', [AdminController::class, 'index']);
-     Route::get('admins/create', [AdminController::class, 'create']);
-     Route::post('admins/store', [AdminController::class, 'store']);
-     Route::get('admins/promote/{id}', [AdminController::class, 'promote']);
-     Route::get('admins/demote/{id}', [AdminController::class, 'demote']);
+     Route::get('dashboard/admins', [AdminController::class, 'index']);
+     Route::get('dashboard/admins/create', [AdminController::class, 'create']);
+     Route::post('dashboard/admins/store', [AdminController::class, 'store']);
+     Route::get('dashboard/admins/promote/{id}', [AdminController::class, 'promote']);
+     Route::get('dashboard/admins/demote/{id}', [AdminController::class, 'demote']);
       });
    });
