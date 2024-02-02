@@ -34,23 +34,24 @@ Route::middleware('lang')->group(function() {
   Route::get('/exams/show/{id}', [ExamController::class, 'show']);
 // Start Exam
 
-  Route::get('/exams/show/questions/{id}', [ExamController::class, 'showquestions'])->middleware(['auth', 'student', 'verified']);
+  Route::get('/exams/show/questions/{id}', [ExamController::class, 'showquestions'])->middleware(['auth', 'student']);
 
 
 
 // End Exam Route
-  Route::get('/contact', [ContactController::class, 'index'])->middleware(['verified']);
+  Route::get('/contact', [ContactController::class, 'index']);
   Route::post('/contact/message/send', [ContactController::class, 'send']);
-  Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth', 'student', 'verified']);
-  Route::get('/profile/show_answers/{exam}', [ProfileController::class, 'show_answers'])->middleware(['auth', 'student', 'verified']);
+  Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth', 'student']);
+  Route::get('/profile/show_answers/{exam}', [ProfileController::class, 'show_answers'])->middleware(['auth', 'student']);
 });
 
-Route::post('/exams/start/{id}', [ExamController::class, 'start'])->middleware(['auth', 'student', 'verified', 'can-enter-exam']);
-Route::post('/exams/submit/{id}', [ExamController::class, 'submit'])->middleware(['auth', 'student', 'verified']);
+Route::post('/exams/start/{id}', [ExamController::class, 'start'])->middleware(['auth', 'student',  'can-enter-exam']);
+Route::post('/exams/submit/{id}', [ExamController::class, 'submit'])->middleware(['auth', 'student']);
 
 Route::get('/lang/set/{lang}', [LangController::class, 'set']);
 
 // Route for Dashboard
+// remove can 'verified',
 Route::middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function()
  {
      Route::get('dashboard/', [AdminHomeController::class, 'index']);
