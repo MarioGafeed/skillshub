@@ -50,6 +50,7 @@
                     <tr>
                       <th>ID</th>
                       <th>Name</th>
+                      <th>phone</th>
                       <th>Email</th>
                       <th>verified</th>
                       <th>Active</th>
@@ -61,6 +62,7 @@
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                       <td class="student-name">{{ $student->name }}</td>
+                      <td class="student-phone">{{ $student->phone }}</td>
                       <td class="student-email">{{ $student->email }}</td>
                       <td>
                         @if(  $student->email_verified_at  )
