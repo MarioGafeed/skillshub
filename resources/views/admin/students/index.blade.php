@@ -79,8 +79,9 @@
                           @endif
                         </td>
                       <td>
-                          <a href="{{ url("dashboard/students/toggle/$student->id") }}" class="btn btn-sm btn-secondry"><i class="fas fa-toggle-on"></i></a>
+                          <a href="{{ url("dashboard/students/toggle/$student->id") }}" </a>
                           <a href="{{ url("dashboard/students/show-scores/$student->id") }}" target="_blank" class="btn btn-sm btn-success"><i class="fas fa-percent"></i></a>
+                          <a href="{{ url("dashboard/students/skill-showsubscribe/$student->id") }}" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-university"></i></a>
                       </td>
                     </tr>
                     @endforeach

@@ -87,9 +87,12 @@ Route::middleware(['auth', 'verified', 'can-enter-dashboard'] )->group(function(
      Route::get('dashboard/students/create', [StudentController::class, 'create']);
      Route::post('dashboard/students/store', [StudentController::class, 'store']);
      Route::get('dashboard/students/show-scores/{id}', [StudentController::class, 'showScores']);
+     Route::get('dashboard/students/skill-showsubscribe/{id}', [StudentController::class, 'showSubscribe']);
+     Route::post('dashboard/students/skills_subscribtion/store/{user}', [StudentController::class, 'storeSubscription']);
      Route::get('dashboard/students/open-exam/{studentId}/{examId}', [StudentController::class, 'openExam']);
      Route::get('dashboard/students/close-exam/{studentId}/{examId}', [StudentController::class, 'closeExam']);
      Route::get('dashboard/students/toggle/{user}', [StudentController::class, 'toggle']);
+     Route::get('dashboard/students/toggle/{user}/{skillId}', [StudentController::class, 'toggleSkillSubscription']);
      Route::get('dashboard/students/show_answers/{studentId}/{examId}', [StudentController::class, 'show_answers']);
 
 // for Admins

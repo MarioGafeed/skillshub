@@ -23,7 +23,35 @@
 				</div>
 
 			</div>
-			<!-- /Home -->
+			<div class="callus dir">
+                <div class="row no-gutters">
+                    <div class="col-4" class="container" style="text-align: center;">
+                       <h2>
+						<a class="site-btn2" href="https://api.whatsapp.com/send?&amp;phone=201096389912&amp;text=انا مهتم بالعرض الذهبي على الامتحانات هل من الممكن مساعدتي وكيفية الاستفادة بالعرض؟" target="_blank"><i class="fa fa-whatsapp"></i>العرض الذهبي اكثر من 90 امتحان لغة انجليزية لأبطال 3ث فقط خمسون جنيهاً مصرياً لا غير للتفاصيل والإشتراك اضغط هنا</a>
+					   </h2>
+                    </div>
+                    <div class="col-4">
+                        <a href="tel:+201096389912" class="calling text-white d-block"><i class="fa fa-phone"></i></a>
+                    </div>
+                    <div class="col-4">
+                        <a href="#form" class="message text-white d-block"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+			{{-- ai --}}
+			 <!-- Modal popup -->
+			 <div id="popup" class="popup">
+				<div class="popup-content">
+				  <h2>العرض الذهبي</h2> 				
+				  <a  href="https://api.whatsapp.com/send?&amp;phone=+201096389912&amp;text=انا مهتم بالعرض الدهبي للحريت والإستفادة بأكثر من 90 امتحان في المادة ممكن المزيد من التفاصيل؟" target="_blank"><i class="fa fa-whatsapp"></i>العرض الذهبي اكثر من 90 امتحان لأبطال 3ث فقط خمسون جنيهاً مصرياً لا غير للتفاصيل والإشتراك اضغط هنا.</a>
+				  
+				  <button id="whatsapp-btn" > 
+				  للتفاصيل للإستفادة بالعرض إضغط هنا
+				  </button>			
+				  <button id="close-btn">اغلاق</button>	  
+				</div>
+			  </div>
 
 			<!-- Courses -->
 			<div id="courses" class="section">
@@ -104,5 +132,53 @@
 
 			</div>
 			<!-- /Contact CTA -->
+
+
+			
+
+<!-- Modal -->
+<style>
+	.popup {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:  rgba(87, 78, 75, 0.5);
+  display: none;
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: hsl(60, 59%, 70%);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+</style>
+
+<script>
+// Get DOM elements
+const popup = document.getElementById('popup');
+const closeBtn = document.getElementById('close-btn');
+const whatsappBtn = document.getElementById('whatsapp-btn');
+
+// Show popup 
+popup.style.display = 'block';
+
+// Close popup
+closeBtn.addEventListener('click', () => {
+  popup.style.display = 'none'; 
+});
+
+// Open WhatsApp chat
+whatsappBtn.addEventListener('click', () => {
+  window.open('https://wa.me/+201096389912');
+});
+
+</script>
 
 @endsection
