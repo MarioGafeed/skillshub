@@ -61,31 +61,31 @@
                                   @foreach($exam->questions As $index =>  $ques )
                                   <div class="panel panel-default">
                                       <div class="panel-heading">
-                                        <h3 class="panel-title"> {{$index+1}}- {{$ques->title}}</h3>
+                                        <h3 class="panel-title"> {{$index+1}}- {!! $ques->title !!}</h3>
                                       </div>
                                       <div class="panel-body">
                                           <div class="radio">
                                               <label>
                                                 <input type="radio" name="answers[{{$ques->id}}]"  value="1" form="exam-submit-form">
-                                                {{ $ques->op1 }}
+                                                {!! $ques->op1 !!}
                                               </label>
                                           </div>
                                           <div class="radio">
                                               <label>
                                                 <input type="radio" name="answers[{{$ques->id}}]" value="2"  form="exam-submit-form">
-                                                {{ $ques->op2 }}
+                                                {!! $ques->op2 !!}
                                               </label>
                                           </div>
                                           <div class="radio">
                                               <label>
                                                 <input type="radio" name="answers[{{$ques->id}}]" value="3" form="exam-submit-form">
-                                                {{ $ques->op3 }}
+                                                {!! $ques->op3 !!}
                                               </label>
                                           </div>
                                           <div class="radio">
                                               <label>
                                                 <input type="radio" name="answers[{{$ques->id}}]" value="4" form="exam-submit-form">
-                                                {{ $ques->op4 }}
+                                                {!! $ques->op4 !!}
                                               </label>
                                           </div>
                                       </div>

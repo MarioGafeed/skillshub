@@ -158,6 +158,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
+<script src="{{ asset('admin/ckeditor/ckeditor.js') }}" charset="utf-8"></script>
+
 
 <!-- jQuery -->
 <script src=" {{ asset('admin/js/jquery.js') }} "></script>

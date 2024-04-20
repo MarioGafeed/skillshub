@@ -123,3 +123,12 @@
   <!-- /.content-wrapper -->
 
 @endsection
+
+@section('scripts')
+<script>
+  CKEDITOR.replace( 'desc_en' );
+</script>
+<script>
+  CKEDITOR.replace( 'desc_ar' );
+</script>
+@endsection

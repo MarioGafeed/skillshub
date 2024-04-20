@@ -16,11 +16,11 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('exam_id')->constrained();
-            $table->text('title');
-            $table->string('op1');
-            $table->string('op2');
-            $table->string('op3');
-            $table->string('op4');
+            $table->longtext('title');
+            $table->longtext('op1');
+            $table->longtext('op2');
+            $table->longtext('op3');
+            $table->longtext('op4');
             $table->tinyInteger('right_ans');
             $table->timestamps();
         });

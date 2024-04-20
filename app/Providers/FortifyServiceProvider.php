@@ -2,35 +2,36 @@
 
 namespace App\Providers;
 
-use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Fortify\ResetUserPassword;
-use App\Actions\Fortify\UpdateUserPassword;
-use App\Actions\Fortify\UpdateUserProfileInformation;
-use Illuminate\Cache\RateLimiting\Limit;
+use App\Models\City;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\View;
+use App\Actions\Fortify\CreateNewUser;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Cache\RateLimiting\Limit;
+use App\Actions\Fortify\ResetUserPassword;
+use App\Actions\Fortify\RegisterWithCities;
+use App\Actions\Fortify\UpdateUserPassword;
+use Illuminate\Support\Facades\RateLimiter;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Actions\Fortify\UpdateUserProfileInformation;
 
 class FortifyServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
-        //
+        Fortify::createUsersUsing(RegisterController::class);
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
+        View::composer('auth.register', function ($view) {
+            $cities = City::all();
+            $view->with('cities', $cities);
+        });
+        
+        Fortify::createUsersUsing(RegisterWithCities::class);
+
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -44,9 +45,9 @@ class FortifyServiceProvider extends ServiceProvider
                 return view('auth.login');
             });
 // Add By mario
-        Fortify::verifyEmailView(function () {
-        return view('auth.verify-email');
-        });
+        // Fortify::verifyEmailView(function () {
+        // return view('auth.verify-email');
+        // });
 // ِAdd By mario
         Fortify::requestPasswordResetLinkView(function () {
         return view('auth.forgot-password');
@@ -55,9 +56,11 @@ class FortifyServiceProvider extends ServiceProvider
 // Add By Mario
         Fortify::resetPasswordView(function ($request) {
         return view('auth.reset-password', ['request' => $request]);
+
+        
     });
 
-
+    
         RateLimiter::for('login', function (Request $request) {
             return Limit::perMinute(5)->by($request->email.$request->ip());
         });
@@ -66,4 +69,5 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
     }
+    
 }

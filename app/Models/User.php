@@ -2,46 +2,34 @@
 
 namespace App\Models;
 
+use App\Models\City;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'phone',
         'email',
         'password',
         'role_id',
+        'type',
+        'city_id',
         'active',
         'who_added'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -49,6 +37,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function role()
     {
        return $this->BelongsTo(Role::class);
+    }
+
+    public function City()
+    {
+        return $this->belongsTo('App\Models\City', 'city_id');
     }
 
     public function exams()

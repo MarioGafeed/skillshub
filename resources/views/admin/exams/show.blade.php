@@ -57,12 +57,13 @@
                       <td>{{ $exam->skill->jname('ar') }}</td>
                     </tr>
                     <tr>
-                      <th>description (en) </th>
-                      <td>{{ $exam->jdesc('en') }}</td>
+                      <th>description (en)</th>
+                      
+                      <td>{!! $exam->jdesc('en') !!}</td>
                     </tr>
                     <tr>
                       <th>description (ar) </th>
-                      <td>{{ $exam->jdesc('ar') }}</td>
+                      <td>{!! $exam->jdesc('ar') !!}</td>
                     </tr>
                     <tr>
                       <th>Image </th>

@@ -69,6 +69,7 @@ return [
   'phone'                            =>     'Phone',
   'exam'                             =>     'Exam',
   'Updated_at'                       =>     'DateTime',
+  'division'                         =>     'Choose Division',
 
 
 

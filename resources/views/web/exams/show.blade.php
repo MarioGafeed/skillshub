@@ -53,7 +53,7 @@
                     <!-- blog post -->
                     <div class="blog-post mb-5">
                         <p>
-                            {{ $exam->jdesc() }}
+                            {!! $exam->jdesc() !!}
                         </p>
                     </div>
                     <!-- /blog post -->

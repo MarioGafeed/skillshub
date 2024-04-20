@@ -43,8 +43,8 @@ class ExamController extends Controller
       $request->validate([
         'name_en' => 'required|max:50|string',
         'name_ar' => 'required|max:50|string',
-        'desc_en' => 'required|max:5000|string',
-        'desc_ar' => 'required|max:5000|string',
+        'desc_en' => 'required|string',
+        'desc_ar' => 'required|string',
         'skill_id'=> 'required|exists:skills,id',
         'questions_no'=> 'required|integer|min:1',
         'diff'    => 'required|integer|min:1|max:5',
@@ -92,17 +92,17 @@ class ExamController extends Controller
     // $request->session()->flash('current', "$exam/$exam->id");
     $request->validate([
       'title'              => 'required|array|unique:questions',
-      'title.*'            => 'required|string|max:500',
+      'title.*'            => 'required|string',
       'right_ans'          => 'required|array',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
       'op1'                => 'required|array',
-      'op1.*'              => 'required|string|max:255',
+      'op1.*'              => 'required|string',
       'op2'                => 'required|array',
-      'op2.*'              => 'required|string|max:255',
+      'op2.*'              => 'required|string',
       'op3'                => 'required|array',
-      'op3.*'              => 'required|string|max:255',
+      'op3.*'              => 'required|string',
       'op4'                => 'required|array',
-      'op4.*'              => 'required|string|max:255',
+      'op4.*'              => 'required|string',
     ]);
     for ($i=0; $i < $exam->questions_no; $i++) {
            Question::create([
@@ -135,8 +135,8 @@ class ExamController extends Controller
     $request->validate([
       'name_en'          => 'required|string|max:50',
       'name_ar'          => 'required|string|max:50',
-      'desc_en'          => 'required|string|max:5000',
-      'desc_ar'          => 'required|string|max:5000',
+      'desc_en'          => 'required|string',
+      'desc_ar'          => 'required|string',
       'img'              => 'nullable|image|max:2048',
       'skill_id'         => 'required|exists:skills,id',
       'diff'             => 'required|integer|min:1|max:5',
@@ -178,12 +178,12 @@ class ExamController extends Controller
   public function updateQuestion(Exam $exam, Question $question, Request $request)
   {
     $data = $request->validate([
-      'title'         =>  'required|string|max:500',
+      'title'         =>  'required|string',
       'right_ans'     =>  'required|in:1,2,3,4',
-      'op1'       =>  'required|string|max:255',
-      'op2'       =>  'required|string|max:255',
-      'op3'       =>  'required|string|max:255',
-      'op4'       =>  'required|string|max:255',
+      'op1'       =>  'required|string',
+      'op2'       =>  'required|string',
+      'op3'       =>  'required|string',
+      'op4'       =>  'required|string',
     ]);
     $question->update($data);
     return redirect( url("dashboard/exams/show-question/{$exam->id}") );

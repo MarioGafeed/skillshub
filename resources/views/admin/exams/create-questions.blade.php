@@ -42,8 +42,8 @@
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="title[]" class="form-control"  placeholder="Enter Title for Question" >
+                    <label>Title</label>                    
+                    <textarea name="title[]"  ></textarea>
                   </div>
                 </div>
 
@@ -56,29 +56,29 @@
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label>Option 1</label>
-                    <input type="text" name="op1[]" class="form-control"  placeholder="Enter the option" >
+                    <label>Option 1</label>                    
+                    <textarea name="op1[]" id="op1" ></textarea>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label>Option 2</label>
-                    <input type="text" name="op2[]" class="form-control"  placeholder="Enter the option" >
+                    <label>Option 2</label>                    
+                    <textarea name="op2[]" id="op2" ></textarea>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label>Option 3</label>
-                    <input type="text" name="op3[]" class="form-control"  placeholder="Enter the option" >
+                    <label>Option 3</label>                    
+                    <textarea name="op3[]" id="op3" ></textarea>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 4</label>
-                    <input type="text" name="op4[]" class="form-control"  placeholder="Enter the option" >
+                    <textarea name="op4[]" id="op4" ></textarea>
                   </div>
                 </div>
               </div>
@@ -98,5 +98,44 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+@endsection
+
+@section('scripts')
+<script>
+  $(document).ready(function() {
+        $('textarea[name^="title"]').each(function() {
+            CKEDITOR.replace(this);
+        });
+    });
+</script>
+<script>
+  $(document).ready(function() {
+        $('textarea[name^="op1"]').each(function() {
+            CKEDITOR.replace(this);
+        });
+    });
+</script>
+<script>
+  $(document).ready(function() {
+        $('textarea[name^="op2"]').each(function() {
+            CKEDITOR.replace(this);
+        });
+    });
+</script>
+<script>
+  $(document).ready(function() {
+        $('textarea[name^="op3"]').each(function() {
+            CKEDITOR.replace(this);
+        });
+    });
+</script>
+<script>
+  $(document).ready(function() {
+        $('textarea[name^="op4"]').each(function() {
+            CKEDITOR.replace(this);
+        });
+    });
+</script>
 
 @endsection

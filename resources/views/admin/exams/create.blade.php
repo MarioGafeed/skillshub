@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section('main')
+
   <!-- Content Wrapper. Contains page content -->
   <!-- Content Header (Page header) -->
 <div class="content-wrapper">
@@ -52,12 +53,13 @@
                </div>
                 <div class="form-group">
                   <label>Description (en)</label>
-                  <textarea name="desc_en" rows="5" class="form-control"  placeholder="Enter Description in English"></textarea>
+                  <textarea name="desc_en" class="form-control"  placeholder="Enter Description in English"></textarea>
                 </div>
 
                 <div class="form-group">
                   <label>Description (ar)</label>
-                  <textarea name="desc_ar" rows="5" class="form-control"  placeholder="Enter Description in Arabic"></textarea>
+                  <textarea name="desc_ar"
+                   class="form-control"  placeholder="Enter Description in Arabic"></textarea>
                 </div>
 
                 <div class="row">
@@ -126,4 +128,13 @@
   </div>
   <!-- /.content-wrapper -->
 
+@endsection
+
+@section('scripts')
+<script>
+  CKEDITOR.replace( 'desc_en' );
+</script>
+<script>
+  CKEDITOR.replace( 'desc_ar' );
+</script>
 @endsection

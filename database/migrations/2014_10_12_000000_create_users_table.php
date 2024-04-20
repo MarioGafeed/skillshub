@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->smallInteger('who_added')->default(1);
             $table->smallInteger('refId')->default(1);
             $table->boolean('active')->default(true);
+            $table->foreignId('city_id')->constrained('cities');
+            $table->enum('type', ['علوم', 'رياضة', 'ادبي']);
             $table->rememberToken();
             $table->timestamps();
         });

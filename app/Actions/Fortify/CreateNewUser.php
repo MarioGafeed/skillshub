@@ -15,6 +15,7 @@ class CreateNewUser implements CreatesNewUsers
 
     public function create(array $input)
     {
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
@@ -25,8 +26,9 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'phone' => ['required', 'unique:users'],
-            
-            'password' => $this->passwordRules(),
+            'city_id' => ['required', 'exists:cities,id'],
+            'type' => 'required',
+
         ])->validate();
 
         $studentroleNum = Role::where('name', 'student')->first();
@@ -34,9 +36,10 @@ class CreateNewUser implements CreatesNewUsers
             'name'      => $input['name'],
             'email'     => $input['email'],
             'phone'     => $input['phone'],
+            'type'      => $input['type'],
+            'city_id'   => $input['city_id'],            
             'password'  => Hash::make($input['password']),
             'role_id'   => $studentroleNum->id,
-
         ]);
     }
 }

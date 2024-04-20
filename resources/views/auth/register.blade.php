@@ -52,7 +52,22 @@
             <input class="input" type="text" name="phone" placeholder="{{ __('web.phone') }}">
             <input class="input" type="email" name="email" placeholder="{{ __('web.email') }}">            
             <input class="input" type="password" name="password" placeholder="{{ __('web.password') }}">
-            <input class="input" type="password" name="password_confirmation" placeholder="{{ __('web.password_confirm') }}">
+            <div>              
+              <select name="city_id" id="city" class="form-control" required>
+                  <option value="">Select City</option>
+                  @foreach($cities as $city)
+                      <option value="{{ $city->id }}">{{ $city->name }}</option>
+                  @endforeach
+              </select>
+          </div>
+            <div>              
+              <select name="type" id="type" class="form-control" required>
+                  <option >{{ __('web.division') }}</option>                 
+                  <option value="علوم">علمي علوم</option>
+                  <option value="رياضة">علمي رياضة</option>
+                  <option value="ادبي">ادبي</option>
+              </select>
+          </div>
             <button type="submit" class="main-button icon-button pull-right">{{ __('web.signup') }}</button>
           </form>
         </div>
