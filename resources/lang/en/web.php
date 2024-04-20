@@ -27,7 +27,7 @@ return [
   'submit'                           =>     'Submit',
   'reset-password'                   =>     'Reset Password',
 
-  'heroTitle'                        =>     'Al7ryt Free Online Skill Assement For instructor and Student',
+  'heroTitle'                        =>     'Al7ryt Online Skill assessments For instructor and Student',
   'heroDesc'                         =>     'Join Us and test your Skills Now',
   'contactTitle'                     =>     'Bringing teachers, tests and test-takers together',
   'popularExamsTitle'                =>     'Popular Exams',
