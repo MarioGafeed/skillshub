@@ -18,7 +18,7 @@ class CreateExamsTable extends Migration
             $table->foreignId('skill_id')->constrained();
             $table->longText('desc');
             $table->text('name');
-            $table->string('img', 255);
+            $table->string('img');
             $table->tinyInteger('questions_no');
             $table->tinyInteger('diff');
             $table->smallInteger('duration_mins');
