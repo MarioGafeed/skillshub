@@ -17,12 +17,11 @@ class RegisterWithCities implements CreatesNewUsers
     public function create(array $input)
     {       
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string'],
             'email' => [
                 'required',
                 'string',
-                'email',
-                'max:255',
+                'email',                
                 Rule::unique(User::class),
             ],
             'phone' => ['required', 'unique:users'],
