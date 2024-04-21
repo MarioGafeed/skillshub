@@ -92,17 +92,17 @@ class ExamController extends Controller
     // $request->session()->flash('current', "$exam/$exam->id");
     $request->validate([
       'title'              => 'required|array|unique:questions',
-      'title.*'            => 'required|string',
+      'title.*'            => 'required',
       'right_ans'          => 'required|array',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
       'op1'                => 'required|array',
-      'op1.*'              => 'required|string',
+      'op1.*'              => 'required',
       'op2'                => 'required|array',
-      'op2.*'              => 'required|string',
+      'op2.*'              => 'required',
       'op3'                => 'required|array',
-      'op3.*'              => 'required|string',
+      'op3.*'              => 'required',
       'op4'                => 'required|array',
-      'op4.*'              => 'required|string',
+      'op4.*'              => 'required',
     ]);
     for ($i=0; $i < $exam->questions_no; $i++) {
            Question::create([
@@ -178,12 +178,12 @@ class ExamController extends Controller
   public function updateQuestion(Exam $exam, Question $question, Request $request)
   {
     $data = $request->validate([
-      'title'         =>  'required|string',
+      'title'         =>  'required',
       'right_ans'     =>  'required|in:1,2,3,4',
-      'op1'       =>  'required|string',
-      'op2'       =>  'required|string',
-      'op3'       =>  'required|string',
-      'op4'       =>  'required|string',
+      'op1'       =>  'required',
+      'op2'       =>  'required',
+      'op3'       =>  'required',
+      'op4'       =>  'required',
     ]);
     $question->update($data);
     return redirect( url("dashboard/exams/show-question/{$exam->id}") );
