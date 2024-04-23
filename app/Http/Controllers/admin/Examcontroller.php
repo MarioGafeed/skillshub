@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
-use App\Events\ExamAddedEvent;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Exam;
-use App\Models\Question;
 use App\Models\Skill;
+use App\Models\Question;
+use Illuminate\Http\Request;
+use App\Events\ExamAddedEvent;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ExamController extends Controller
 {
@@ -40,7 +41,7 @@ class ExamController extends Controller
 
   public function store(Request $request)
   {
-      $request->validate([
+      $validator = Validator::make($request->all(), [
         'name_en' => 'required|max:50|string',
         'name_ar' => 'required|max:50|string',
         'desc_en' => 'required|string',
@@ -51,7 +52,11 @@ class ExamController extends Controller
         'duration_mins'=> 'required|integer|min:1',
         'img'     => 'required|image|max:2048'
       ]);
-
+      if ($validator->fails()) {
+        return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
+    }
       $imgpath = Storage::putFile("exams", $request->file('img'));
 
       $exam = Exam::create([
@@ -90,8 +95,8 @@ class ExamController extends Controller
   public function storeQuestions(Exam $exam, Request $request)
   {
     // $request->session()->flash('current', "$exam/$exam->id");
-    $request->validate([
-      'title'              => 'required|unique:questions',
+    $validator = Validator::make($request->all(), [
+      'title'              => 'required',
       'title.*'            => 'required',
       'right_ans'          => 'required',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
@@ -104,10 +109,19 @@ class ExamController extends Controller
       'op4'                => 'required',
       'op4.*'              => 'required',
     ]);
-    for ($i=0; $i < $exam->questions_no; $i++) {
+    if ($validator->fails()) {     
+      return redirect()->back()
+          ->withErrors($validator)
+          ->withInput();
+  } 
+    $isolddata = false ;
+    for ($i=1; $i < $exam->questions_no; $i++) {
+      foreach ($request->title[$i] as $title) {
+      }    
            Question::create([
+            
         'exam_id'             => $exam->id,
-        'title'               => $request->title[$i],
+        'title'               => $title,
         'right_ans'           => $request->right_ans[$i],
         'op1'                 => $request->op1[$i],
         'op2'                 => $request->op2[$i],
@@ -121,7 +135,7 @@ class ExamController extends Controller
     // $request->session()->flash('prev', "exam/$exam->id");
     event(new ExamAddedEvent);
 
-    return redirect('dashboard/exams');
+    return redirect('dashboard/exams')->with($isolddata);
   }
 
   public function edit(Exam $exam)
