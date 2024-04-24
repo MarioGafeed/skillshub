@@ -95,18 +95,19 @@ class ExamController extends Controller
   public function storeQuestions(Exam $exam, Request $request)
   {
     // $request->session()->flash('current', "$exam/$exam->id");
-    $validator = Validator::make($request->all(), [      
-      'title.*'            => 'required|string',
-      'right_ans'          => 'required|string',
+    $validator = Validator::make($request->all(), [
+      'title'              => 'required|array',
+      'title.*'            => 'required',
+      'right_ans'          => 'required',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
-      'op1'                => 'required|array',
-      'op1.*'              => 'required|array',
-      'op2'                => 'required|array',
-      'op2.*'              => 'required|array',
-      'op3'                => 'required|array',
-      'op3.*'              => 'required|array',
-      'op4'                => 'required|array',
-      'op4.*'              => 'required|array',
+      'op1'                => 'required',
+      'op1.*'              => 'required',
+      'op2'                => 'required',
+      'op2.*'              => 'required',
+      'op3'                => 'required',
+      'op3.*'              => 'required',
+      'op4'                => 'required',
+      'op4.*'              => 'required',
     ]);
     if ($validator->fails()) {     
       return redirect()->back()
