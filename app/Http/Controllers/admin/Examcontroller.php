@@ -96,9 +96,9 @@ class ExamController extends Controller
   {
     // $request->session()->flash('current', "$exam/$exam->id");
     $validator = Validator::make($request->all(), [
-      'title'              => 'required|array',
-      'title.*'            => 'required|array',
-      'right_ans'          => 'required|array',
+      'title'              => 'required|string',
+      'title.*'            => 'required|string',
+      'right_ans'          => 'required|string',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
       'op1'                => 'required|array',
       'op1.*'              => 'required|array',
