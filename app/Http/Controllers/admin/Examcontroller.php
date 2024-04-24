@@ -95,8 +95,7 @@ class ExamController extends Controller
   public function storeQuestions(Exam $exam, Request $request)
   {
     // $request->session()->flash('current', "$exam/$exam->id");
-    $validator = Validator::make($request->all(), [
-      'title'              => 'required|string',
+    $validator = Validator::make($request->all(), [      
       'title.*'            => 'required|string',
       'right_ans'          => 'required|string',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
