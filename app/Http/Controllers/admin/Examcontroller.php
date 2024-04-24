@@ -96,8 +96,7 @@ class ExamController extends Controller
   {
     // $request->session()->flash('current', "$exam/$exam->id");
     $validator = Validator::make($request->all(), [
-      'title'              => 'required|array',
-      'title.*'            => 'required',
+      
       'right_ans'          => 'required',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
       'op1'                => 'required',
@@ -109,7 +108,8 @@ class ExamController extends Controller
       'op4'                => 'required',
       'op4.*'              => 'required',
     ]);
-    if ($validator->fails()) {     
+    if ($validator->fails()) { 
+      dd($request->all());    
       return redirect()->back()
           ->withErrors($validator)
           ->withInput();
