@@ -101,14 +101,14 @@ class ExamController extends Controller
       'title.*'            => 'required',
       'right_ans'          => 'required',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
-      'op1'                => 'required',
-      'op1.*'              => 'required',
-      'op2'                => 'required',
-      'op2.*'              => 'required',
-      'op3'                => 'required',
-      'op3.*'              => 'required',
-      'op4'                => 'required',
-      'op4.*'              => 'required',
+      'op1'                => 'required|string',
+      'op1.*'              => 'required|string',
+      'op2'                => 'required|string',
+      'op2.*'              => 'required|string',
+      'op3'                => 'required|string',
+      'op3.*'              => 'required|string',
+      'op4'                => 'required|string',
+      'op4.*'              => 'required|string',
     ]);
     if ($validator->fails()) {
       return redirect()->back()
