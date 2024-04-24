@@ -38,25 +38,11 @@
 
                                     <div class="row">
                                         <div class="col-6">
-                                            <div class="form-group">
-                                                <label>Title</label>
-                                                @php
-                                                    if (!is_null(old('title'))) {
-                                                        $oldTitles = old('title.' . $i) ?? [];
-                                                    } else {
-                                                        $oldTitles = 0;
-                                                    }
-                                                @endphp
-                                                <div class="title-wrapper">
-                                                    @if (empty($oldTitles))
-                                                        <textarea name="title[{{ $i }}][]" class="form-control title-textarea"></textarea>
-                                                    @else
-                                                        @foreach ($oldTitles as $title)
-                                                            <textarea name="title[{{ $i }}][]" class="form-control title-textarea">{{ $title }}</textarea>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </div>
+                                          <div class="form-group">
+                                            <label>title</label>
+                                            <textarea name="title[{{ $i }}]" id="title">{{ old('title.' . $i) ?? null }}</textarea>
+                                         </div>
+
                                         </div>
 
                                         <div class="col-6">
@@ -114,11 +100,9 @@
 
     @section('scripts')
         <script>
-            $(document).ready(function() {
-                $('.title-textarea').each(function() {
-                    CKEDITOR.replace(this, {
-                        data: $(this).val()
-                    });
+             $(document).ready(function() {
+                $('textarea[name^="title"]').each(function() {
+                    CKEDITOR.replace(this);
                 });
             });
         </script>

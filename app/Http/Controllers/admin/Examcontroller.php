@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App\Models\Exam;
 use App\Models\Skill;
 use App\Models\Question;
@@ -41,46 +42,46 @@ class ExamController extends Controller
 
   public function store(Request $request)
   {
-      $validator = Validator::make($request->all(), [
-        'name_en' => 'required|max:50|string',
-        'name_ar' => 'required|max:50|string',
-        'desc_en' => 'required|string',
-        'desc_ar' => 'required|string',
-        'skill_id'=> 'required|exists:skills,id',
-        'questions_no'=> 'required|integer|min:1',
-        'diff'    => 'required|integer|min:1|max:5',
-        'duration_mins'=> 'required|integer|min:1',
-        'img'     => 'required|image|max:2048'
-      ]);
-      if ($validator->fails()) {
-        return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+    $validator = Validator::make($request->all(), [
+      'name_en' => 'required|max:50|string',
+      'name_ar' => 'required|max:50|string',
+      'desc_en' => 'required|string',
+      'desc_ar' => 'required|string',
+      'skill_id' => 'required|exists:skills,id',
+      'questions_no' => 'required|integer|min:1',
+      'diff'    => 'required|integer|min:1|max:5',
+      'duration_mins' => 'required|integer|min:1',
+      'img'     => 'required|image|max:2048'
+    ]);
+    if ($validator->fails()) {
+      return redirect()->back()
+        ->withErrors($validator)
+        ->withInput();
     }
-      $imgpath = Storage::putFile("exams", $request->file('img'));
+    $imgpath = Storage::putFile("exams", $request->file('img'));
 
-      $exam = Exam::create([
-        'name'=>json_encode([
-          'en'=>$request->name_en,
-          'ar'=>$request->name_ar,
-        ]),
-        'desc'=>json_encode([
-          'en'=>$request->desc_en,
-          'ar'=>$request->desc_ar,
-        ]),
-        'img'=>$imgpath,
-        'skill_id'=>$request->skill_id,
-        'questions_no'=>$request->questions_no,
-        'diff'=>$request->diff,
-        'duration_mins'=>$request->duration_mins,
-        'active' => 0,
-      ]);
-      // $request->session()->flash('prev', "exam/$exam->id");
+    $exam = Exam::create([
+      'name' => json_encode([
+        'en' => $request->name_en,
+        'ar' => $request->name_ar,
+      ]),
+      'desc' => json_encode([
+        'en' => $request->desc_en,
+        'ar' => $request->desc_ar,
+      ]),
+      'img' => $imgpath,
+      'skill_id' => $request->skill_id,
+      'questions_no' => $request->questions_no,
+      'diff' => $request->diff,
+      'duration_mins' => $request->duration_mins,
+      'active' => 0,
+    ]);
+    // $request->session()->flash('prev', "exam/$exam->id");
 
-      return redirect( url("dashboard/exams/create-questions/{$exam->id}") );
+    return redirect(url("dashboard/exams/create-questions/{$exam->id}"));
   }
 
-  public function createQuestions(Exam $exam, Request $request )
+  public function createQuestions(Exam $exam, Request $request)
   {
     // if (session('prev') !== "exam/$exam->id"  and session('current') !== "exam/$exam->id") {
     //   $val = $request->session()->all();
@@ -96,7 +97,8 @@ class ExamController extends Controller
   {
     // $request->session()->flash('current', "$exam/$exam->id");
     $validator = Validator::make($request->all(), [
-      
+      'title'              => 'required',
+      'title.*'            => 'required',
       'right_ans'          => 'required',
       'right_ans.*'        => 'required|string|in:1,2,3,4',
       'op1'                => 'required',
@@ -108,20 +110,18 @@ class ExamController extends Controller
       'op4'                => 'required',
       'op4.*'              => 'required',
     ]);
-    if ($validator->fails()) { 
-      dd($request->all());    
+    if ($validator->fails()) {
       return redirect()->back()
-          ->withErrors($validator)
-          ->withInput();
-  } 
-    $isolddata = false ;
-    for ($i=1; $i < $exam->questions_no; $i++) {
-      foreach ($request->title[$i] as $title) {
-      }    
-           Question::create([
-            
+        ->withErrors($validator)
+        ->withInput();
+    }
+
+    for ($i = 1; $i < $exam->questions_no; $i++) {
+
+      Question::create([
+
         'exam_id'             => $exam->id,
-        'title'               => $title,
+        'title'               => $request->title[$i],
         'right_ans'           => $request->right_ans[$i],
         'op1'                 => $request->op1[$i],
         'op2'                 => $request->op2[$i],
@@ -135,7 +135,7 @@ class ExamController extends Controller
     // $request->session()->flash('prev', "exam/$exam->id");
     event(new ExamAddedEvent);
 
-    return redirect('dashboard/exams')->with($isolddata);
+    return redirect('dashboard/exams');
   }
 
   public function edit(Exam $exam)
@@ -180,14 +180,14 @@ class ExamController extends Controller
 
 
     $request->session()->flash('mgs', 'row updated successfully');
-    return redirect( url("dashboard/exams/show/{$exam->id}") );
+    return redirect(url("dashboard/exams/show/{$exam->id}"));
   }
 
   public function editQuestion(Exam $exam, Question $question)
   {
-     $data['exam']     = $exam;
-     $data['ques']     = $question;
-     return view('admin.exams.edit-question')->with($data);
+    $data['exam']     = $exam;
+    $data['ques']     = $question;
+    return view('admin.exams.edit-question')->with($data);
   }
   public function updateQuestion(Exam $exam, Question $question, Request $request)
   {
@@ -200,7 +200,7 @@ class ExamController extends Controller
       'op4'       =>  'required',
     ]);
     $question->update($data);
-    return redirect( url("dashboard/exams/show-question/{$exam->id}") );
+    return redirect(url("dashboard/exams/show-question/{$exam->id}"));
   }
 
   public function delete(Exam $exam, Request $request)
@@ -213,8 +213,8 @@ class ExamController extends Controller
       $msg = "Row DELETED Successfully";
       $request->session()->flash('msg', $msg);
     } catch (\Exception $e) {
-        $msgError = "Row DELETED Failed";
-        $request->session()->flash('msgError', $msgError);
+      $msgError = "Row DELETED Failed";
+      $request->session()->flash('msgError', $msgError);
     }
 
     return back();
@@ -222,12 +222,11 @@ class ExamController extends Controller
 
   public function toggle(Exam $exam, Request $request)
   {
-    if ($exam->questions()->count() ==  $exam->questions_no ) {
+    if ($exam->questions()->count() ==  $exam->questions_no) {
       $exam->update([
-        'active' => ! $exam->active
+        'active' => !$exam->active
       ]);
-    }
-    else {
+    } else {
       $msgError = "Exam activated failed please review the questions number of this exam";
       $request->session()->flash('msgError', $msgError);
     }
