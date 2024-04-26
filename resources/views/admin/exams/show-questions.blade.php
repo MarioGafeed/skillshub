@@ -48,12 +48,12 @@
                   @foreach($exam->questions As $ques)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td class="ques-name">{{ $ques->title }}</td>
+                    <td class="ques-name">{!! $ques->title !!}</td>
                     <td class="ques-op1">
-                      {{ $ques->op1 }} |<br>
-                      {{ $ques->op2 }} |<br>
-                      {{ $ques->op3 }} |<br>
-                      {{ $ques->op4 }} |
+                      {!! $ques->op1 !!} |<br>
+                      {!! $ques->op2 !!} |<br>
+                      {!! $ques->op3 !!} |<br>
+                      {!! $ques->op4 !!} |
                     </td>
                     <td class="ques-name">{{ $ques->right_ans }}</td>
                     <td>
