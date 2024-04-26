@@ -41,42 +41,45 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label>Title</label>
-                    <input type="text" name="title" class="form-control" value="{{$ques->title}}">
+                    <input type="text" name="title" class="form-control" value="{{ strip_tags($ques->title) }}">
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Right Answer.</label>
-                    <input type="number" name="right_ans" max="4" min="1" class="form-control"  value="{{$ques->right_ans}}">
+                    @php
+                        echo "$ques->right_ans"
+                    @endphp
+                    <input type="number" name="right_ans" max="4" min="1" class="form-control"  value="{{ $ques->right_ans }}">
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 1</label>
-                    <input type="text" name="op1" class="form-control"  value="{{$ques->op1}}">
+                    <input type="text" name="op1" class="form-control"  value="{{ strip_tags($ques->op1) }}">
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 2</label>
-                    <input type="text" name="op2" class="form-control"  value="{{$ques->op2}}">
+                    <input type="text" name="op2" class="form-control"  value="{{ strip_tags($ques->op2) }}">
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 3</label>
-                    <input type="text" name="op3" class="form-control"  value="{{$ques->op3}}">
+                    <input type="text" name="op3" class="form-control"  value="{{ strip_tags($ques->op3) }}">
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 4</label>
-                    <input type="text" name="op4" class="form-control"  value="{{$ques->op4}}">
+                    <input type="text" name="op4" class="form-control"  value="{{ strip_tags($ques->op4) }}">
                   </div>
                 </div>
               </div>            
