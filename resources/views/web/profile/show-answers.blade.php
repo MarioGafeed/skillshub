@@ -63,11 +63,11 @@
             @foreach( $questions As $question)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td> {{ $question->title }} </td>
-                <td> {{ $question->op1 }} </td>
-                <td> {{ $question->op2 }} </td>
-                <td> {{ $question->op3 }} </td>
-                <td> {{ $question->op4 }} </td>
+                <td> {{ strip_tags($question->title) }} </td>
+                <td> {{ strip_tags($question->op1) }} </td>
+                <td> {{ strip_tags($question->op2) }} </td>
+                <td> {{ strip_tags($question->op3) }} </td>
+                <td> {{ strip_tags($question->op4) }} </td>
                 <td> {{ $question->pivot->user_answer }} </td>
                 <td> {{ $question->pivot->right_ans }} </td>   
                 <td> {{ $question->pivot->updated_at }} </td>   
