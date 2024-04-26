@@ -63,8 +63,8 @@
             <div>              
               <select name="type" id="type" class="form-control" required>
                   <option >{{ __('web.division') }}</option>                 
-                  <option value="علوم">علمي علوم</option>
-                  <option value="رياضة">علمي رياضة</option>
+                  <option value="علوم">علوم</option>
+                  <option value="رياضة">رياضة</option>
                   <option value="ادبي">ادبي</option>
               </select>
           </div>
