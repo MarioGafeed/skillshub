@@ -40,8 +40,8 @@
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="title" class="form-control" value="{{ strip_tags($ques->title) }}">
+                    <label>Title</label>                    
+                    <textarea name="title" >{{ $ques->title }}</textarea>
                   </div>
                 </div>
 
@@ -58,28 +58,28 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 1</label>
-                    <input type="text" name="op1" class="form-control"  value="{{ strip_tags($ques->op1) }}">
+                    <textarea name="op1" >{{ $ques->op1 }}</textarea>                    
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 2</label>
-                    <input type="text" name="op2" class="form-control"  value="{{ strip_tags($ques->op2) }}">
+                    <textarea name="op2" >{{ $ques->op2 }}</textarea>                    
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 3</label>
-                    <input type="text" name="op3" class="form-control"  value="{{ strip_tags($ques->op3) }}">
+                    <textarea name="op3" >{{ $ques->op3 }}</textarea>                    
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
                     <label>Option 4</label>
-                    <input type="text" name="op4" class="form-control"  value="{{ strip_tags($ques->op4) }}">
+                    <textarea name="op4" >{{ $ques->op4 }}</textarea>                    
                   </div>
                 </div>
               </div>            
@@ -99,3 +99,41 @@
   <!-- /.content-wrapper -->
 
 @endsection
+
+@section('scripts')
+        <script>
+             $(document).ready(function() {
+                $('textarea[name^="title"]').each(function() {
+                    CKEDITOR.replace(this);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('textarea[name^="op1"]').each(function() {
+                    CKEDITOR.replace(this);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('textarea[name^="op2"]').each(function() {
+                    CKEDITOR.replace(this);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('textarea[name^="op3"]').each(function() {
+                    CKEDITOR.replace(this);
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('textarea[name^="op4"]').each(function() {
+                    CKEDITOR.replace(this);
+                });
+            });
+        </script>
+    @endsection

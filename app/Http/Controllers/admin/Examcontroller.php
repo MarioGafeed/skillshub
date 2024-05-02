@@ -116,7 +116,7 @@ class ExamController extends Controller
         ->withInput();
     }
 
-    for ($i = 1; $i < $exam->questions_no; $i++) {
+    for ($i = 1; $i < $exam->questions_no+1; $i++) {
 
       Question::create([
 
