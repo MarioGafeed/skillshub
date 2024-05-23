@@ -161,8 +161,9 @@ class ExamController extends Controller
 
     if ($request->hasfile('img')) {
       Storage::delete($path);
-      storage::putfile("exams", $request->file('img'));
+      $path = storage::putfile("exams", $request->file('img'));
     }
+    
     $exam->update([
       'name' => json_encode([
         'en' => $request->name_en,
