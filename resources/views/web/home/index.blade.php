@@ -27,7 +27,7 @@
                 <div class="row no-gutters">
                     <div class="col-4" class="container" style="text-align: center;">
                        <h2>
-						<a class="site-btn2" href="https://api.whatsapp.com/send?&amp;phone=201096389912&amp;text=انا مهتم بالعرض الذهبي على الامتحانات هل من الممكن مساعدتي وكيفية الاستفادة بالعرض؟" target="_blank"><i class="fa fa-whatsapp"></i>العرض الذهبي اكثر من 30 امتحان لغة انجليزية لأبطال 3ث فقط ثلاثون 30 مصرياً لا غير للتفاصيل والإشتراك اضغط هنا</a>
+						<a class="site-btn2" href="https://api.whatsapp.com/send?&amp;phone=201096389912&amp;text=انا مهتم بالعرض الذهبي على الامتحانات هل من الممكن مساعدتي وكيفية الاستفادة بالعرض؟" target="_blank"><i class="fa fa-whatsapp"></i>العرض الذهبي اكثر من 25 امتحان واكثر من 600 سؤال في المادة الواحدة لأبطال 3ث فقط خمسون جنيهاً مصرياً لا غير للتفاصيل والإشتراك اضغط هنا</a>
 					   </h2>
                     </div>
                     <div class="col-4">
@@ -44,7 +44,7 @@
 			 <div id="popup" class="popup">
 				<div class="popup-content">
 				  <h2>العرض الذهبي</h2> 				
-				  <a  href="https://api.whatsapp.com/send?&amp;phone=+201096389912&amp;text=انا مهتم بالعرض الدهبي للحريت والإستفادة بأكثر من 30 امتحان في المادة ممكن المزيد من التفاصيل؟" target="_blank"><i class="fa fa-whatsapp"></i>العرض الذهبي اكثر من 30 امتحان لأبطال 3ث فقط ثلاثون جنيهاً مصرياً لا غير للتفاصيل والإشتراك اضغط هنا.</a>
+				  <a  href="https://api.whatsapp.com/send?&amp;phone=+201096389912&amp;text=انا مهتم بالعرض الدهبي للحريت والإستفادة بأكثر من 30 امتحان في المادة ممكن المزيد من التفاصيل؟" target="_blank"><i class="fa fa-whatsapp"></i>العرض الذهبي اكثر من 25 امتحان بأكثر من 600 سؤال في المادة الواحدة لأبطال 3ث فقط خمسون جنيهاً مصرياً لا غير للتفاصيل والإشتراك اضغط هنا.</a>
 				  
 				  <button id="whatsapp-btn" > 
 				  للتفاصيل للإستفادة بالعرض إضغط هنا
