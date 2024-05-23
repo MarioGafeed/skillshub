@@ -71,6 +71,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                                 <!-- /single exam -->
                                 <!-- row -->
                                 <div class="row">
@@ -80,7 +81,7 @@
                                     <!-- pagination -->
 
                                 </div>
-                            @endforeach
+                            
                         </div>
                     @endif
                     <!-- /row -->

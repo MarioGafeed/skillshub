@@ -25,7 +25,7 @@ class SkillController extends Controller
 
         if ($skill->pivot->subscriber == 1) {
 
-          $data['exams'] = $data['skill']->exams()->active()->paginate(4);
+          $data['exams'] = $data['skill']->exams()->active()->paginate(25);
 
           return view('web.skills.show')->with($data);
         } else {
